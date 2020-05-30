@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { ConfigComponent } from './config/config.component';
 import { CreateComponent } from './create/create.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
