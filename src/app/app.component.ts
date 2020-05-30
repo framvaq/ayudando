@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'ayudando';
+  navs = [
+    { url: 'inicio', content: 'Inicio' },
+    { url: 'anuncios', content: 'Anuncios' },
+    { url: 'nuevo-anuncio', content: 'Crear anuncio' },
+    { url: 'buscar', content: 'Buscar anuncios' },
+    { url: 'configuracion', content: 'Panel de Usuario' }
+  ];
 }
