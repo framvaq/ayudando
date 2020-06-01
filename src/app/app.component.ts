@@ -13,4 +13,13 @@ export class AppComponent {
     { url: 'buscar', content: 'Buscar anuncios' },
     { url: 'configuracion', content: 'Panel de Usuario' }
   ];
+
+  displayNav = false;
+
+  toggleNav() {
+    this.displayNav = !this.displayNav;
+    //
+    console.log('toggleNav()');
+    //
+  }
 }

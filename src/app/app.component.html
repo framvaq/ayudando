@@ -1,11 +1,17 @@
-<nav>
-  <ul>
-    <li *ngFor="let nav of navs">
-      <a [routerLink]="nav.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        {{ nav.content }}
-      </a>
-    </li>
-  </ul>
-</nav>
-
+<header>
+  <h1>AYUDANDO</h1>
+  <button (click)="toggleNav()">Mostrar nav</button>
+  <nav *ngIf="displayNav">
+    <ul>
+      <li *ngFor="let nav of navs">
+        <a [routerLink]="nav.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          {{ nav.content }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<p>
+  hola
+</p>
 <router-outlet></router-outlet>

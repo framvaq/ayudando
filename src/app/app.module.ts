@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { CreateComponent } from './create/create.component';
 import { ConfigComponent } from './config/config.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
     ConfigComponent,
     AnnouncementsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
