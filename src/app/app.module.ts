@@ -9,9 +9,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateComponent } from './create/create.component';
-import { ConfigComponent } from './config/config.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserPanelComponent } from './userPanel/userPanel.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     RegisterComponent,
     CreateComponent,
-    ConfigComponent,
+    UserPanelComponent,
     AnnouncementsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],

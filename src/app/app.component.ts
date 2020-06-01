@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   navs = [
     { url: 'inicio', content: 'Inicio' },
-    { url: 'anuncios', content: 'Anuncios' },
     { url: 'nuevo-anuncio', content: 'Crear anuncio' },
     { url: 'buscar', content: 'Buscar anuncios' },
-    { url: 'configuracion', content: 'Panel de Usuario' }
+    { url: 'panel-usuario', content: 'Panel de Usuario' },
+    { url: 'anuncios', content: 'Anuncios' }
   ];
 
   displayNav = false;

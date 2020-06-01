@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UserPanelComponent } from './userPanel.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [UserPanelComponent],
   imports: [CommonModule]
 })
-export class ConfigModule {}
+export class UserPanelModule {}
