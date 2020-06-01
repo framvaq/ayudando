@@ -11,7 +11,8 @@ export class AppComponent {
     { url: 'nuevo-anuncio', content: 'Crear anuncio' },
     { url: 'buscar', content: 'Buscar anuncios' },
     { url: 'panel-usuario', content: 'Panel de Usuario' },
-    { url: 'anuncios', content: 'Anuncios' }
+    { url: 'anuncios', content: 'Anuncios' },
+    { url: 'login', content: 'Cerrar sesión' }
   ];
 
   displayNav = false;
