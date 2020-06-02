@@ -1,10 +1,37 @@
 ////GRID DEFINITION////
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    'title title title nav-container'
+    'search search search search'
+    'main main main main';
+}
+
+.title {
+  grid-area: title;
+  justify-self: center;
+}
+
+.nav-container {
+  grid-area: nav-container;
+  justify-self: end;
+}
+
+.search {
+  grid-area: search;
+  justify-self: center;
+}
+
+.main {
+  grid-area: main;
+}
 
 ////NAV STYLES////
 nav {
   ul {
     li {
-      display: inline;
       list-style-type: none;
       text-decoration-line: none;
     }

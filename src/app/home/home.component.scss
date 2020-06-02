@@ -1,1 +1,45 @@
+.grid-container {
+  display: grid;
+}
+div,
+section {
+  border: 1px solid black;
+}
+.notifications {
+  li {
+    list-style: none;
+  }
+}
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.announcements {
+  a:hover * p,
+  a:hover * h4 {
+    text-decoration: underline;
+  }
+  .anuncio {
+    display: grid;
+    grid-template-areas: 'img text';
+  }
+
+  .announcement-img {
+    grid-area: img;
+  }
+
+  .announcement-text {
+    grid-area: text;
+    display: grid;
+    grid-template-rows: 10%, 1fr;
+
+    .announcement-title {
+      grid-area: title;
+    }
+    .announcement-description {
+      grid-area: description;
+    }
+  }
+}
