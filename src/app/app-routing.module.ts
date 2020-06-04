@@ -1,24 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { AnnouncementsComponent } from './announcements/announcements.component';
-import { CreateComponent } from './create/create.component';
-import { RegisterComponent } from './register/register.component';
-import { SearchComponent } from './search/search.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { UserPanelComponent } from './userPanel/userPanel.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '', component: LoginComponent },
-  { path: 'inicio', component: HomeComponent },
-  { path: 'anuncios', component: AnnouncementsComponent },
-  { path: 'panel-usuario', component: UserPanelComponent },
-  { path: 'nuevo-anuncio', component: CreateComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'buscar', component: SearchComponent },
-  { path: '**', component: NotFoundComponent }
+  { path: 'login', loadChildren: () => import('./login/login.module') },
+  { path: 'inicio', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+  {
+    path: 'anuncios',
+    loadChildren: () => import('./announcements/announcements.module').then(m => m.AnnouncementsModule)
+  },
+  { path: 'panel-usuario', loadChildren: () => import('./userPanel/userPanel.module').then(m => m.UserPanelModule) },
+  { path: 'nuevo-anuncio', loadChildren: () => import('./create/create.module').then(m => m.CreateModule) },
+  { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },
+  { path: 'buscar', loadChildren: () => import('./search/search.module').then(m => m.SearchModule) },
+  { path: '**', loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule) }
 ];
 
 @NgModule({
