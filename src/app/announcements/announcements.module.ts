@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { AnnouncementsRoutingModule } from './announcements-routing.module';
 import { AnnouncementsComponent } from './announcements.component';
-import { AnnouncementComponent } from './announcement/announcement.component';
 
 @NgModule({
-  declarations: [AnnouncementsComponent, AnnouncementComponent],
+  declarations: [AnnouncementsComponent],
   imports: [CommonModule, AnnouncementsRoutingModule]
 })
 export class AnnouncementsModule {}
