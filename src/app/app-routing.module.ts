@@ -9,6 +9,10 @@ const routes: Routes = [
     path: 'anuncios',
     loadChildren: () => import('./announcements/announcements.module').then(m => m.AnnouncementsModule)
   },
+  {
+    path: 'anuncios/anuncio',
+    loadChildren: () => import('./announcements/announcement/announcement.module').then(m => m.AnnouncementModule)
+  },
   { path: 'panel-usuario', loadChildren: () => import('./userPanel/userPanel.module').then(m => m.UserPanelModule) },
   { path: 'nuevo-anuncio', loadChildren: () => import('./create/create.module').then(m => m.CreateModule) },
   { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },

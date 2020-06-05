@@ -3,10 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AnnouncementsComponent } from './announcements.component';
 
-const routes: Routes = [
-  { path: '', component: AnnouncementsComponent },
-  { path: 'anuncio', loadChildren: () => import('./announcement/announcement.module').then(m => m.AnnouncementModule) }
-];
+const routes: Routes = [{ path: '', component: AnnouncementsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
