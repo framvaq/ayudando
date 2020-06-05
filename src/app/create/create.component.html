@@ -1,20 +1,16 @@
 <h1>Crear anuncio</h1>
-<form>
-  <label
-    >Título
-    <input type="text" matInput />
-  </label>
-  <label
-    >Descripción
-    <textarea></textarea>
-  </label>
-  <label
-    >Fecha
-    <input type="date" />
-  </label>
-  <label
-    >Lugar
-    <input type="text" matInput placeholder="Si es relevante" />
-  </label>
-  <input type="button" value="Publicar" />
+<form class="form form-create">
+  <label for="title">Título </label>
+  <input type="text" id="title" matInput autofocus placeholder="Nombre del anuncio" required />
+
+  <label for="description">Descripción </label>
+  <textarea id="description"></textarea>
+
+  <label for="date">Fecha </label>
+  <input type="date" id="date" />
+
+  <label for="place">Lugar </label>
+  <input type="text" matInput placeholder="Si es relevante" id="place" />
+
+  <input type="button" value="Publicar" id="publish" />
 </form>
