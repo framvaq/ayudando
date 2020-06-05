@@ -1,30 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { CreateComponent } from './create/create.component';
-import { AnnouncementsComponent } from './announcements/announcements.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserPanelComponent } from './userPanel/userPanel.component';
+import { AppMaterialModule } from './app-material.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NotFoundComponent,
-    LoginComponent,
-    RegisterComponent,
-    CreateComponent,
-    UserPanelComponent,
-    AnnouncementsComponent
-  ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, AppMaterialModule],
   providers: [],
   bootstrap: [AppComponent]
 })
