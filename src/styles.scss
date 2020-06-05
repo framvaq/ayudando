@@ -38,20 +38,3 @@ a {
   text-decoration-line: none;
   color: black;
 }
-
-p {
-  background-color: green;
-}
-
-.form {
-  display: grid;
-  grid-template-columns: auto 0.8fr;
-  row-gap: 20px;
-  column-gap: 10px;
-  label {
-    justify-self: right;
-  }
-  input {
-    justify-self: left;
-  }
-}

@@ -1,1 +1,42 @@
+.form {
+  display: grid;
+  grid-template-columns: auto 0.8fr;
+  grid-template-areas:
+    'usrlabel username'
+    'paslabel password'
+    'subbutton subbutton';
+  row-gap: 20px;
+  column-gap: 10px;
+  label {
+    justify-self: right;
+    #usrlabel {
+      grid-area: usrlabel;
+    }
+    #paslabel {
+      grid-area: paslabel;
+    }
+  }
+  input {
+    #username {
+      grid-area: username;
+    }
+    #password {
+      grid-area: password;
+    }
+    justify-self: left;
+  }
+  input[type='submit'] {
+    grid-area: subbutton;
+    justify-self: center;
+  }
+}
 
+#register {
+  color: blue;
+  text-decoration: underline;
+}
+
+h1,
+p {
+  text-align: center;
+}
