@@ -1,1 +1,49 @@
-<p>register works!</p>
+<h1>Registro</h1>
+<div class="text">
+  <p>Antes de comenzar, necesitamos que nos cuentes un poco más sobre ti...</p>
+</div>
+<form class="form">
+  <fieldset class="technic">
+    <legend>
+      Primero los detalles técnicos...
+    </legend>
+    <label for="mail" id="lab-mail">Correo eletrónico</label>
+    <input type="email" id="mail" />
+    <p class="helper" id="helper-mail">Correo</p>
+
+    <label for="pass" id="lab-pass">Contraseña</label>
+    <input type="password" id="pass" />
+    <p class="helper" id="helper-pass">Seguridad</p>
+
+    <label for="passver" id="lab-passver">Repite la contraseña</label>
+    <input type="password" id="passver" />
+    <p class="helper" id="helper-passver">iguales?</p>
+
+    <label for="cp" id="lab-cp">Código postal</label>
+    <input type="number" id="cp" min="0" max="99999" minlength="5" maxlength="5" />
+    <p class="helper" id="helper-cp">Ubicación aproximada</p>
+  </fieldset>
+
+  <fieldset class="interesting">
+    <legend>Ahora vamos con lo interesante!!</legend>
+
+    <label for="usrname" id="lab-usrname">Nombre de usuario</label>
+    <input type="text" id="usrname" />
+    <p class="helper" id="helper-usrname">Esto es lo que verán los usuarios</p>
+
+    <label for="options" id="lab-options">Voy a utilizar esto porque...</label>
+    <select id="options">
+      <option value="ask">Necesito ayuda</option>
+      <option value="give">Puedo ayudar</option>
+      <option value="both">Ambas</option>
+    </select>
+  </fieldset>
+
+  <fieldset class="contact">
+    <legend>No queremos ser pesados, tú decides cuándo nos ponemos en contacto contigo.</legend>
+    <label><input type="radio" id="no" />No</label>
+    <p class="helper">
+      Aunque selecciones "no", te contactaremos por cuestiones importantes, normalmente de seguridad.
+    </p>
+  </fieldset>
+</form>

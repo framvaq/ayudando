@@ -1,1 +1,118 @@
+.technic {
+  display: grid;
+  grid-template:
+    'lab-mail       mail'
+    'helper-mail    helper-mail'
+    'lab-pass       pass'
+    'helper-pass    helper-pass'
+    'lab-passver    passver'
+    'helper-passver helper-passver'
+    'lab-cp         cp'
+    'helper-cp      helper-cp'
+    / auto 0.8fr;
+  column-gap: 10px;
 
+  label {
+    justify-self: right;
+
+    &#lab-mail {
+      grid-area: lab-mail;
+    }
+    &#lab-pass {
+      grid-area: lab-pass;
+    }
+    &#lab-passver {
+      grid-area: lab-passver;
+    }
+    &#lab-cp {
+      grid-area: lab-cp;
+    }
+  }
+
+  input {
+    justify-self: left;
+    &#mail {
+      grid-area: mail;
+    }
+    &#pass {
+      grid-area: pass;
+    }
+
+    &#passver {
+      grid-area: passver;
+    }
+    &#cp {
+      grid-area: cp;
+    }
+  }
+
+  p {
+    justify-self: center;
+    &#helper-mail {
+      grid-area: helper-mail;
+    }
+    &#helper-pass {
+      grid-area: helper-pass;
+    }
+    &#helper-passver {
+      grid-area: helper-passver;
+    }
+    &#helper-cp {
+      grid-area: helper-cp;
+    }
+  }
+}
+
+.interesting {
+  display: grid;
+  grid-template:
+    'lab-usrname     usrname'
+    'helper-usrname  helper-usrname'
+    'lab-options options'
+    / auto 0.8fr;
+
+  column-gap: 10px;
+
+  label {
+    justify-self: right;
+
+    #lab-usrname {
+      grid-area: lab-usrname;
+    }
+    #lab-options {
+      grid-area: lab-options;
+    }
+  }
+
+  input {
+    justify-self: left;
+    #usrname {
+      grid-area: usrname;
+    }
+    #options {
+      grid-area: options;
+    }
+  }
+
+  p {
+    justify-self: center;
+    &#helper-usrname {
+      grid-area: helper-usrname;
+    }
+  }
+}
+
+input[type='submit'] {
+  grid-area: subbutton;
+  justify-self: center;
+}
+
+h1,
+p {
+  text-align: center;
+}
+
+.text {
+  width: 90vw;
+  text-align: center;
+}
