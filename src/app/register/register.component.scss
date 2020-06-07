@@ -102,11 +102,10 @@
   }
 }
 
-input[type='submit'] {
-  grid-area: subbutton;
-  justify-self: center;
+#register {
+  display: block;
+  margin: auto;
 }
-
 h1,
 p {
   text-align: center;
@@ -115,4 +114,8 @@ p {
 .text {
   width: 90vw;
   text-align: center;
+}
+
+.contact {
+  display: grid;
 }
