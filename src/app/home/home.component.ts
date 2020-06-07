@@ -10,8 +10,7 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    /*TODO
-    checkNotifications(){
+    /*TODOcheckNotifications(){
       return notifications > 0 ? true : false
     }
 
