@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SearchRoutingModule } from './search-routing.module';
 import { SearchComponent } from './search.component';
-import { LayoutsModule } from '../layouts/layouts.module';
+import { LayoutsModule } from '../helpers/layouts/layouts.module';
 
 @NgModule({
   declarations: [SearchComponent],
