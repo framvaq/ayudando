@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,21 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  navs = [
-    { url: 'inicio', content: 'Inicio' },
-    { url: 'nuevo-anuncio', content: 'Crear anuncio' },
-    { url: 'buscar', content: 'Buscar anuncios' },
-    { url: 'panel-usuario', content: 'Panel de Usuario' },
-    { url: 'anuncios', content: 'Anuncios' },
-    { url: 'login', content: 'Cerrar sesión' }
-  ];
-
-  displayNav = false;
-
-  toggleNav() {
-    this.displayNav = !this.displayNav;
-    //
-    console.log('toggleNav()');
-    //
-  }
+  // showHeader = true;
 }

@@ -1,3 +1,4 @@
+<app-header-layout></app-header-layout>
 <p *ngIf="usuario.sexo == 'h'; else mujer">Bienvenido, {{ usuario.nombre }}</p>
 <ng-template #mujer>Bienvenida, {{ usuario.nombre }}</ng-template>
 <div class="breadcrumbs">
@@ -15,21 +16,5 @@
       <li>[[*ngFor...]]->[[notificationsTemplate]]</li>
     </ul>
   </section>
-  <section class="announcements">
-    <h3>Anuncios relevantes</h3>
-    <a href="">
-      <div class="announcement">
-        <div class="announcement-img">
-          <img src="../../assets/mock-img.png" />
-        </div>
-        <div class="announcement-text">
-          <h4 class="announcement-title">Anuncio de ejemplo</h4>
-          <p class="announcement-description">
-            (la imagen la obtengo del backend) Lugar, hora, descripción rápida y y si me pongo a escribir más le vale
-            quegfdgdf
-          </p>
-        </div>
-      </div>
-    </a>
-  </section>
+  <app-small-announcement-layout></app-small-announcement-layout>
 </main>
