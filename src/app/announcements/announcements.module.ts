@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AnnouncementsRoutingModule } from './announcements-routing.module';
 import { AnnouncementsComponent } from './announcements.component';
-import { LayoutsModule } from '../layouts/layouts.module';
+import { LayoutsModule } from '../helpers/layouts/layouts.module';
 
 @NgModule({
   declarations: [AnnouncementsComponent],

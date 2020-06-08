@@ -1,12 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AnnouncementsService } from '../helpers/services/announcements.service';
+
 @Component({
   selector: 'app-announcements',
   templateUrl: './announcements.component.html',
   styleUrls: ['./announcements.component.scss']
 })
 export class AnnouncementsComponent implements OnInit {
-  constructor() {}
+  announcements;
+  anuncioFiltrado;
+  /*
+  getAnnouncements() {
+    return this.announcementsService.getAnnouncements();
+  }
 
-  ngOnInit(): void {}
+  getFilteredAnnouncement(id: number) {
+    return this.announcementsService.getAnnouncementsById(1);
+  }*/
+
+  constructor(private announcementsService: AnnouncementsService) {}
+
+  ngOnInit(): void {
+    /*this.getAnnouncements();
+
+    this.getFilteredAnnouncement(1);*/
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { Announcement } from '../../announcement';
 import { ANNOUNCEMENTS } from '../../mock-announcements';
 
@@ -9,7 +10,11 @@ import { ANNOUNCEMENTS } from '../../mock-announcements';
 })
 export class AnnouncementsService {
   constructor() {}
-  getAnnouncements(): Observable<Announcement[]> {
-    return of(ANNOUNCEMENTS);
+  getAnnouncements() {
+    return ANNOUNCEMENTS;
+  }
+
+  getAnnouncementsById(id) {
+    return ANNOUNCEMENTS[--id];
   }
 }
