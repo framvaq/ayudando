@@ -1,2 +1,32 @@
 <app-header-layout></app-header-layout>
-<p>userPanel works!</p>
+<div class="grid">
+  <h2 class="title">Configuración</h2>
+  <form>
+    <fieldset class="notifications">
+      <legend>Notificaciones</legend>
+      <p class="helper">
+        Aunque selecciones "no", te contactaremos por cuestiones importantes, normalmente de seguridad.
+      </p>
+      <label><input type="checkbox" id="no" />No</label>
+      <label><input type="checkbox" id="when-contact" />Cuando alguien contacte conmigo</label>
+      <label><input type="checkbox" id="when-announcement" />Cando se publique un anuncio relevante</label>
+    </fieldset>
+    <fieldset>
+      <legend>Uso</legend>
+      <label for="options" id="lab-options">Voy a utilizar esto porque...</label>
+      <select id="options">
+        <option value="ask">Necesito ayuda</option>
+        <option value="give">Puedo ayudar</option>
+        <option value="both">Ambas</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend>Editar mis anuncios</legend>
+      <div *ngFor="let announcement of announcements"></div>
+    </fieldset>
+    <div class="buttons">
+      <button id="save">Guardar cambios</button>
+      <button id="exit">Salir sin guardar</button>
+    </div>
+  </form>
+</div>

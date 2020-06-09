@@ -1,1 +1,26 @@
+h2 {
+  text-align: center;
+}
 
+fieldset {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  button {
+    height: 50px;
+    width: 120px;
+  }
+
+  #save {
+    background-color: lightgreen;
+  }
+
+  #exit {
+    background-color: salmon;
+  }
+}

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userPanel.component.scss']
 })
 export class UserPanelComponent implements OnInit {
+  announcements;
   constructor() {}
 
   ngOnInit(): void {}
