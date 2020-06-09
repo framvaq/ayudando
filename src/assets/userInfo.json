@@ -1,0 +1,28 @@
+{
+  "userID": 1,
+  "userName": "Nombre usuario 1",
+  "usage": "both",
+  "announcements": [
+    {
+      "id": 1,
+      "title": "Example title01",
+      "description": "Exampledescription01: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque est sit amet elementum lobortis. Cras interdum magna turpis, vel auctor sapien aliquet in. Nullam in condimentum erat, eu pulvinar orci. Suspendisse ut lorem non massa pharetra congue ut non orci. Fusce mattis tellus nisl, at bibendum diam interdum vel. Nulla facilisi. Pellentesque blandit eu odio ac fermentum. ",
+      "date": "13/01/2021",
+      "place": {
+        "calle": "Calle de ejemplo 1",
+        "numero": "1",
+        "cp": "04720",
+        "provincia": "almería",
+        "autonomia": "andalucia"
+      },
+      "type": "Recado"
+    },
+    {
+      "id": 2,
+      "title": "Example title02",
+      "description": "Exampledescription01: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque est sit amet elementum lobortis. Cras interdum magna turpis, vel auctor sapien aliquet in. Nullam in condimentum erat, eu pulvinar orci. Suspendisse ut lorem non massa pharetra congue ut non orci. Fusce mattis tellus nisl, at bibendum diam interdum vel. Nulla facilisi. Pellentesque blandit eu odio ac fermentum. ",
+      "date": "13/01/2021",
+      "type": "Recado"
+    }
+  ]
+}
