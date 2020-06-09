@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { LayoutsModule } from './helpers/layouts/layouts.module';
+import { LayoutsModule } from './layouts/layouts.module';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es-419';
 

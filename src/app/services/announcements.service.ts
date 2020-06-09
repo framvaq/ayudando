@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of, from } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Announcement } from '../../announcement';
-import { ANNOUNCEMENTS } from '../../mock-announcements';
+import { Announcement } from '../announcement';
+import { ANNOUNCEMENTS } from '../mock-announcements';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class AnnouncementsService {
    * @param num Number of announcements to return
    */
   getNumberOfAnnouncements(num) {
-    console.log(ANNOUNCEMENTS.filter(announce => announce.id <= num));
+    // console.log(ANNOUNCEMENTS.filter(announce => announce.id <= num));
     return ANNOUNCEMENTS.filter(announce => announce.id <= num);
   }
 
