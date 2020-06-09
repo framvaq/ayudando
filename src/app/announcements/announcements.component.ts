@@ -9,21 +9,14 @@ import { AnnouncementsService } from '../helpers/services/announcements.service'
 })
 export class AnnouncementsComponent implements OnInit {
   announcements;
-  anuncioFiltrado;
-  /*
-  getAnnouncements() {
-    return this.announcementsService.getAnnouncements();
-  }
-
-  getFilteredAnnouncement(id: number) {
-    return this.announcementsService.getAnnouncementsById(1);
-  }*/
+  filteredAnnounce;
 
   constructor(private announcementsService: AnnouncementsService) {}
 
   ngOnInit(): void {
-    /*this.getAnnouncements();
+    this.announcements = this.announcementsService.getNumberOfAnnouncements(2);
 
+    /*
     this.getFilteredAnnouncement(1);*/
   }
 }
