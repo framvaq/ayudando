@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Observable, of, from } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Announcement } from '../announcement';
-import { ANNOUNCEMENTS } from '../mock-announcements';
+import { Announcement } from '../assets/announcement';
+import { ANNOUNCEMENTS } from '../assets/mock-announcements';
 
 @Injectable({
   providedIn: 'root'
