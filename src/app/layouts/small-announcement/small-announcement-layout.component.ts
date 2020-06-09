@@ -9,14 +9,7 @@ import { AnnouncementsService } from '../../services/announcements.service';
 export class SmallAnnouncementLayoutComponent implements OnInit {
   announcement;
   filteredAnnounce;
-  /*
-  {{ announcement.id }}
-  {{ announcement.title }}
-  {{ announcement.description }}
-  {{ announcement.date | date: 'shortDate' }}
-  {{ announcement.place }}
-  {{ announcement.type }}
-  */
+
   constructor(private announcementsService: AnnouncementsService) {}
 
   getAnnouncements() {

@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderLayoutComponent } from './header/header-layout.component';
 import { SmallAnnouncementLayoutComponent } from './small-announcement/small-announcement-layout.component';
-import { BigAnnouncementLayoutComponent } from './big-announcement/big-announcement-layout/big-announcement-layout.component';
+import { BigAnnouncementLayoutComponent } from './big-announcement/big-announcement-layout.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
-  exports: [HeaderLayoutComponent, SmallAnnouncementLayoutComponent],
+  exports: [HeaderLayoutComponent, SmallAnnouncementLayoutComponent, BigAnnouncementLayoutComponent],
   declarations: [HeaderLayoutComponent, SmallAnnouncementLayoutComponent, BigAnnouncementLayoutComponent]
 })
 export class LayoutsModule {}

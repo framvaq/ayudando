@@ -8,5 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class AnnouncementComponent implements OnInit {
   constructor() {}
 
+  // TODOhttps://egghead.io/lessons/angular-2-load-data-to-build-angular-navigation
   ngOnInit(): void {}
 }

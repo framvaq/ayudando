@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnnouncementsService } from 'src/app/services/announcements.service';
 
 @Component({
   selector: 'app-big-announcement-layout',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./big-announcement-layout.component.scss']
 })
 export class BigAnnouncementLayoutComponent implements OnInit {
-  constructor() {}
+  announcement;
+  id = 2;
+  constructor(private announcementsService: AnnouncementsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.announcement = this.announcementsService.getAnnouncementsById(this.id);
+  }
 }
