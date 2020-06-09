@@ -1,8 +1,4 @@
-.announcements {
-  a:hover * p,
-  a:hover * h4 {
-    text-decoration: underline;
-  }
+
   .announcement {
     display: grid;
     grid-template-columns: 50%, 1fr;
@@ -34,4 +30,3 @@
       grid-area: text;
     }
   }
-}

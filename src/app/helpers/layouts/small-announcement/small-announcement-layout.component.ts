@@ -27,7 +27,7 @@ export class SmallAnnouncementLayoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.getFilteredAnnouncement(1));
+    //console.log(this.getFilteredAnnouncement(1));
     this.getFilteredAnnouncement(1);
   }
 }
