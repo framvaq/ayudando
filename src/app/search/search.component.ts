@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { AnnouncementsService } from '../services/announcements.service';
 
 @Component({
   selector: 'app-search',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  constructor() {}
+  filters = '';
+  results;
 
-  ngOnInit(): void {}
+  constructor(private announcementsService: AnnouncementsService) {}
+
+  ngOnInit(): void {
+    this.results = 3;
+  }
 }
