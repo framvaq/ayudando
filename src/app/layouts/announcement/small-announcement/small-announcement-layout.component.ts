@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnnouncementsService } from '../../services/announcements.service';
+import { AnnouncementsService } from '../../../services/announcements.service';
 
 @Component({
   selector: 'app-small-announcement-layout',
