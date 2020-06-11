@@ -14,7 +14,8 @@ export const ANNOUNCEMENTS: Announcement[] = [
       provincia: 'almería',
       autonomia: 'andalucia'
     },
-    type: 'Recado'
+    type: 'Recado',
+    author: 1
   },
   {
     id: 2,
@@ -22,7 +23,8 @@ export const ANNOUNCEMENTS: Announcement[] = [
     description:
       'Exampledescription02: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque est sit amet elementum lobortis. Cras interdum magna turpis, vel auctor sapien aliquet in. Nullam in condimentum erat, eu pulvinar orci. Suspendisse ut lorem non massa pharetra congue ut non orci. Fusce mattis tellus nisl, at bibendum diam interdum vel. Nulla facilisi. Pellentesque blandit eu odio ac fermentum. ',
     date: new Date(2021, 11, 3),
-    type: 'Recado'
+    type: 'Recado',
+    author: 1
   },
   {
     id: 3,
@@ -37,6 +39,7 @@ export const ANNOUNCEMENTS: Announcement[] = [
       provincia: 'almería',
       autonomia: 'andalucia'
     },
-    type: 'Recado'
+    type: 'Recado',
+    author: 1
   }
 ];
