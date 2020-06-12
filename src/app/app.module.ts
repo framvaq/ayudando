@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { LayoutsModule } from './layouts/layouts.module';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es-419';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeEs, 'es');
 
@@ -20,7 +21,8 @@ registerLocaleData(localeEs, 'es');
     AppRoutingModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    LayoutsModule
+    LayoutsModule,
+    HttpClientModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]

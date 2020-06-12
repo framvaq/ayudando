@@ -1,5 +1,7 @@
 export interface Announcement {
-  id: number;
+  readonly [index: number]: number | string;
+  readonly id: number;
+  readonly author: number;
   title: string;
   description: string;
   date: Date;
@@ -11,7 +13,6 @@ export interface Announcement {
     autonomia: string;
   };
   type: string;
-  author: number;
 }
 /*
 {

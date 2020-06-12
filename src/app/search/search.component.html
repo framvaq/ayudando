@@ -6,7 +6,28 @@
       <mat-icon>close</mat-icon>
       <p>Cerrar</p>
     </button>
-    Sidenav
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <button (click)="sidenav.close()" class="sidenav-menu apply">
+      <mat-icon>done</mat-icon>
+      <p>Aplicar filtros</p>
+    </button>
   </mat-sidenav>
   <mat-sidenav-content>
     <button (click)="sidenav.open()" class="sidenav-menu">
@@ -14,7 +35,33 @@
       <p>Filtrar</p>
     </button>
     <section class="announcement">
-      <app-small-announcement-layout *ngFor="let result of results"></app-small-announcement-layout>
+      <br />
+      <div *ngFor="let announce of announcements">
+        {{ announce.id }}
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </section>
   </mat-sidenav-content>
 </mat-sidenav-container>
