@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { AnnouncementsService } from '../services/announcements.service';
 import { Announcement } from '../announcement';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +11,11 @@ import { Announcement } from '../announcement';
 export class SearchComponent implements OnInit {
   filters = '';
   results;
+  numberOfAnnouncements;
   announcements;
+  announcementsById;
+  announcementsLimitedByNumber;
+  announcementsFiltered;
 
   constructor(private announcementsService: AnnouncementsService) {}
 
@@ -18,7 +23,7 @@ export class SearchComponent implements OnInit {
     this.results = 3;
 
     console.log('getannouncements');
-    this.getAnnouncementsJSON();
+    this.getAnnouncements();
     console.log('getIDannouncements');
     // console.log(this.announcementsService.getAnnouncementsById(1));
     console.log('getNUMBERannouncements');
@@ -27,7 +32,17 @@ export class SearchComponent implements OnInit {
     // console.log(this.announcementsService.getFilteredAnnouncements());
   }
 
-  getAnnouncementsJSON() {
+  getAnnouncements() {
     return this.announcementsService.getAnnouncements().subscribe(result => (this.announcements = result));
+  }
+
+  getAnnouncementsById() {
+    return this.announcementsService.getAnnouncements().subscribe(result => (this.announcementsById = result));
+  }
+
+  getAnnouncementsLimitedByNumber() {
+    return this.announcementsService
+      .getNumberOfAnnouncements(this.numberOfAnnouncements)
+      .subscribe(result => (this.announcementsLimitedByNumber = result));
   }
 }

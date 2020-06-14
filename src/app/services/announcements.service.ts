@@ -28,7 +28,7 @@ export class AnnouncementsService {
    */
   getNumberOfAnnouncements(num) {
     // console.log(ANNOUNCEMENTS.filter(announce => announce.id <= num));
-    return ANNOUNCEMENTS.filter(announce => announce.id <= num);
+    return this.http.get(`${this.baseUrl}/search.php?num=${num}`);
   }
 
   /**

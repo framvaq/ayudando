@@ -1,11 +1,17 @@
 <app-header-layout></app-header-layout>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav disableClose>
+  <mat-sidenav #sidenav disableClose opened="true">
+    <!--
+
+REMEMBER TO DELETE opened="true"
+
+    -->
     <button (click)="sidenav.close()" class="sidenav-menu">
       <mat-icon>close</mat-icon>
       <p>Cerrar</p>
     </button>
+    <app-search-filters></app-search-filters>
     <br />
     <br />
     <br />
@@ -34,11 +40,17 @@
       <mat-icon>filter_alt</mat-icon>
       <p>Filtrar</p>
     </button>
-    <section class="announcement">
+    <section class="announcements">
       <br />
+      <h3>Get announcements</h3>
       <div *ngFor="let announce of announcements">
-        {{ announce.id }}
+        {{ announce | json }}
+        <p>Announce.id = {{ announce.id }}</p>
       </div>
+      <hr />
+
+      <hr />
+
       <br />
       <br />
       <br />
