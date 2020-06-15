@@ -16,7 +16,7 @@ export class SmallAnnouncementLayoutComponent implements OnInit {
     return (this.announcement = this.announcementsService.getAnnouncements());
   }
   getFilteredAnnouncement(id: number) {
-    return (this.filteredAnnounce = this.announcementsService.getAnnouncementsById(id));
+    return (this.filteredAnnounce = this.announcementsService.getAnnouncementById(id));
   }
 
   ngOnInit() {

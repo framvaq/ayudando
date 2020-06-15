@@ -11,7 +11,12 @@
 
 .title {
   grid-area: title;
-  justify-self: center;
+  width: 100%;
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .nav-container {

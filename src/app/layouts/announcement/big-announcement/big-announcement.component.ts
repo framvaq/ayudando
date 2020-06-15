@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnnouncementsService } from '../../../services/announcements.service';
 
 @Component({
   selector: 'app-big-announcement',
@@ -6,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./big-announcement.component.scss']
 })
 export class BigAnnouncementComponent implements OnInit {
-  constructor() {}
+  announcementsById;
+  id;
 
-  ngOnInit(): void {}
+  constructor(private announcementsService: AnnouncementsService) {}
+
+  ngOnInit(): void {
+    this.getAnnouncementById(this.id);
+  }
+
+  getAnnouncementById(id) {
+    return this.announcementsService.getAnnouncementById(id).subscribe(result => (this.announcementsById = result));
+  }
 }
