@@ -5,11 +5,14 @@ import { AnnouncementsService } from '../../services/announcements.service';
 
 @Component({
   selector: 'app-search-filters',
-  templateUrl: './filters.component.html'
+  templateUrl: './filters.component.html',
+  styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent {
   filters = this.formBuilder.group({
-    searchInput: [null]
+    type: [null],
+    date: [null]
+    // place: [null]
   });
 
   numberOfAnnouncements;
@@ -19,6 +22,7 @@ export class FiltersComponent {
 
   submit() {
     console.log('Valor de filters:', this.filters.value);
+    console.log('Valor de type:', this.filters.value['type']);
   }
 
   getAnnouncementsLimitedByNumber() {
