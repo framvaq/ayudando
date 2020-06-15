@@ -4,14 +4,6 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: 'inicio', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-  {
-    path: 'anuncios',
-    loadChildren: () => import('./announcements/announcements.module').then(m => m.AnnouncementsModule)
-  },
-  {
-    path: 'anuncios/anuncio',
-    loadChildren: () => import('./announcements/announcement/announcement.module').then(m => m.AnnouncementModule)
-  },
   { path: 'panel-usuario', loadChildren: () => import('./userPanel/userPanel.module').then(m => m.UserPanelModule) },
   { path: 'nuevo-anuncio', loadChildren: () => import('./create/create.module').then(m => m.CreateModule) },
   { path: 'buscar', loadChildren: () => import('./search/search.module').then(m => m.SearchModule) },

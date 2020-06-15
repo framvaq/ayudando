@@ -8,7 +8,7 @@ if (isset($_GET['num'])) {
     $query->bindParam(':num', $num, PDO::PARAM_INT);
     $query->execute();
 } else {
-    $query = $db->prepare("SELECT * FROM announcements");
+    $query = $db->prepare("SELECT * FROM announcements LIMIT 2");
     $query->execute();
 }
 

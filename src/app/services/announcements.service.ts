@@ -15,7 +15,7 @@ export class AnnouncementsService {
   baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) {}
   /**
-   * Returns all the announcements
+   * Returns 2 announcements by default, to change it, use getNumber of announcements
    */
   getAnnouncements() {
     return this.http.get(`${this.baseUrl}/search.php`);
@@ -23,11 +23,10 @@ export class AnnouncementsService {
 
   /**
    * Returns the specified number of announcements
-   * //TODOimprove to be able to select when to start getting and when to stop
+   * // TODOimprove to be able to select when to start getting and when to stop
    * @param num Number of announcements to return
    */
   getNumberOfAnnouncements(num) {
-    // console.log(ANNOUNCEMENTS.filter(announce => announce.id <= num));
     return this.http.get(`${this.baseUrl}/search.php?num=${num}`);
   }
 
@@ -35,11 +34,18 @@ export class AnnouncementsService {
    * Returns the announcements with the specified ID
    * @param id The id from the announcement I want to retrieve
    */
-  getAnnouncementsById(id) {
-    return ANNOUNCEMENTS.filter(announce => announce.id === id);
+  getAnnouncementById(id) {
+    // TODOthink of php filename
+    return this.http.get(`${this.baseUrl}/search.php?id=${id}`);
   }
 
+  /**
+   * Returns the announcements published by te specified user
+   * @param user The user that published the announcements
+   */
+  getAnnouncementsByUser(user) {}
+
   getFilteredAnnouncements() {
-    console.log(...ANNOUNCEMENTS);
+    console.log();
   }
 }
