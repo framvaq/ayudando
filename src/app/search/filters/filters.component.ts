@@ -22,7 +22,7 @@ export class FiltersComponent {
 
   submit() {
     console.log('Valor de filters:', this.filters.value);
-    console.log('Valor de type:', this.filters.value['type']);
+    console.log('Valor de type:', this.filters.value.type);
   }
 
   getAnnouncementsLimitedByNumber() {
