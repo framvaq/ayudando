@@ -4,7 +4,7 @@ export interface Announcement {
   readonly author: number;
   title: string;
   description: string;
-  date: Date;
+  date?: Date;
   place?: {
     calle: string;
     numero: number;
