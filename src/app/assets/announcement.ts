@@ -2,6 +2,7 @@ export interface Announcement {
   readonly [index: number]: number | string;
   readonly id: number;
   readonly author: number;
+  readonly dateCreated: Date;
   title: string;
   description: string;
   date?: Date;
