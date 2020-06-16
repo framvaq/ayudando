@@ -21,12 +21,12 @@ interface Communities {
 })
 export class SearchComponent implements OnInit {
   announcements;
-  numberOfAnnouncements;
-  announcementsLimitedByNumber;
 
   filters = this.formBuilder.group({
     type: [null], // TODOchange according to userType (if both, value = null)
     place: [null],
+    word: [null],
+    number: [null],
     date: this.formBuilder.group({
       less1week: [false],
       less2weeks: [false],
@@ -53,28 +53,40 @@ export class SearchComponent implements OnInit {
 
   submit() {
     console.log('Valor de filters:', this.filters.value);
-    console.log('=============================');
+    console.log('==================');
     console.log('Valor de place:', this.filters.value.place);
-    console.log('=============================');
+    console.log('==================');
     console.log('Valor de type:', this.filters.value.type);
-    console.log('=============================');
+    console.log('==================');
     console.log('Valor de date:', this.filters.value.date);
     console.log('Valores de less1week:', this.filters.value.date.less1week);
     console.log('Valores de less2weeks:', this.filters.value.date.less2weeks);
     console.log('Valores de less1month:', this.filters.value.date.less1month);
     console.log('Valores de more1month:', this.filters.value.date.more1month);
     console.log('Valores de notdefined:', this.filters.value.date.notdefined);
+    console.log('==================');
+    console.log('Valor de word:', this.filters.value.word);
+    console.log('Valor de number:', this.filters.value.number);
+    console.log('==================');
+
+    this.getAnnouncementsByDescription(this.filters.value.word);
   }
 
-  getAnnouncementsLimitedByNumber() {
+  getAnnouncementsLimitedByNumber(num) {
+    return this.announcementsService.getNumberOfAnnouncements(num).subscribe(result => (this.announcements = result));
+  }
+
+  getAnnouncementsByType(type) {
+    return this.announcementsService.getAnnouncementsByType(type).subscribe(result => (this.announcements = result));
+  }
+
+  getAnnouncementsByPlace(place) {
+    return this.announcementsService.getAnnouncementsByPlace(place).subscribe(result => (this.announcements = result));
+  }
+
+  getAnnouncementsByDescription(word) {
     return this.announcementsService
-      .getNumberOfAnnouncements(this.numberOfAnnouncements)
-      .subscribe(result => (this.announcementsLimitedByNumber = result));
+      .getAnnouncementsByDescription(word)
+      .subscribe(result => (this.announcements = result));
   }
-  /*
-
-
-
-
-  */
 }

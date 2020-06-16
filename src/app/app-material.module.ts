@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatButtonModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatSliderModule
   ],
   exports: [
     MatInputModule,
@@ -28,7 +32,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatButtonModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatSliderModule
   ]
 })
 export class AppMaterialModule {}

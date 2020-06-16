@@ -43,6 +43,7 @@ REMEMBER TO DELETE opened="true"
         <legend>Lugar</legend>
         <mat-form-field>
           <mat-label>Elige...</mat-label>
+          <!-- TODO fix mat-* version & decide which I prefer (like this is more accesible out of the box) -->
           <select matNativeControl formControlName="place">
             <optgroup *ngFor="let community of communities" [label]="community.name">
               <option *ngFor="let province of community.provinces" value="{{ province.value }}">
@@ -52,16 +53,54 @@ REMEMBER TO DELETE opened="true"
           </select>
         </mat-form-field>
       </fieldset>
-      <button mat-raised-button (click)="submit()">Aplicar Filtros</button>
-    </form>
 
-    <br />
-    <br />
-    <button (click)="sidenav.close()" class="sidenav-menu apply">
-      <mat-icon>done</mat-icon>
-      <p>Aplicar filtros</p>
-    </button>
+      <!-- TODO autocomplete
+      <fieldset>
+        <legend>Lugar</legend>
+        <mat-form-field>
+          <mat-label>Elige...</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="place"
+            placeholder="Regiones ordenadas alfabéticamente"
+            [matAutocomplete]="autoGroup"
+          />
+          <mat-autocomplete #autoGroup="matAutocomplete">
+            <mat-optgroup *ngFor="let community of communities" [label]="community.name">
+              <mat-option
+                *ngFor="let province of community.provinces"
+                value="{{ province.value }}"
+                id="provinceSelected"
+              >
+                {{ province.viewValue }}
+              </mat-option>
+            </mat-optgroup>
+          </mat-autocomplete>
+        </mat-form-field>
+      </fieldset>
+-->
+
+      <fieldset>
+        <legend>Palabra clave</legend>
+        <mat-form-field>
+          <mat-label>
+            Escribe una palabra que defina el favor
+          </mat-label>
+          <input matInput type="text" formControlName="word" placeholder="recados, terapia..." class="full-width" />
+        </mat-form-field>
+      </fieldset>
+
+      <fieldset>
+        <legend>Número de anuncios</legend>
+        <mat-slider formControlName="number" min="0" max="10" step="1" thumbLabel tickInterval="1"></mat-slider>
+      </fieldset>
+
+      <br />
+      <button mat-raised-button (click)="submit(); sidenav.close()"><mat-icon>done</mat-icon>Aplicar filtros</button>
+    </form>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <button (click)="sidenav.open()" class="sidenav-menu">
       <mat-icon>filter_alt</mat-icon>

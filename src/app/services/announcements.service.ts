@@ -15,7 +15,7 @@ export class AnnouncementsService {
   baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) {}
   /**
-   * Returns 2 announcements by default, to change it, use getNumber of announcements
+   * Returns all announcements
    */
   getAnnouncements() {
     return this.http.get(`${this.baseUrl}/search.php`);
@@ -28,6 +28,30 @@ export class AnnouncementsService {
    */
   getNumberOfAnnouncements(num) {
     return this.http.get(`${this.baseUrl}/search.php?num=${num}`);
+  }
+
+  /**
+   * Returns the specified type of announce
+   * @param type Type of announce to receive
+   */
+  getAnnouncementsByType(type) {
+    return this.http.get(`${this.baseUrl}/search.php?type=${type}`);
+  }
+
+  /**
+   * Returns the specified place of announce
+   * @param place Place of announce to receive
+   */
+  getAnnouncementsByPlace(place) {
+    return this.http.get(`${this.baseUrl}/search.php?place=${place}`);
+  }
+
+  /**
+   * Returns an announce which contains the word
+   * @param desc Description of announce to receive
+   */
+  getAnnouncementsByDescription(desc) {
+    return this.http.get(`${this.baseUrl}/search.php?desc=${desc}`);
   }
 
   /**
