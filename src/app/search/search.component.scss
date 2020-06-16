@@ -11,15 +11,18 @@
 
 mat-sidenav {
   width: 90%;
-}
 
-// If I use fieldset > *, it creates many unnecesary grids
-fieldset > section,
-fieldset > mat-radio-group {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 10px;
-  mat-checkbox {
-    display: block;
+  // If I use *, it creates many unnecesary grids
+  fieldset > section,
+  fieldset > mat-radio-group {
+    display: grid;
+    width: 1fr;
+    grid-template-columns: 1vw;
+    row-gap: 10px;
+    .mat-checkbox {
+      // TODO fix text width
+      display: inline-block;
+      width: 1vw;
+    }
   }
 }

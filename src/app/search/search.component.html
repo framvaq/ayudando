@@ -15,31 +15,46 @@ REMEMBER TO DELETE opened="true"
       <fieldset>
         <legend>Tipo de anuncio</legend>
         <mat-radio-group class="type">
-          <mat-radio-button ngDefaultControl formControlName="type" value="ask">Pedir ayuda</mat-radio-button>
-          <mat-radio-button ngDefaultControl formControlName="type" value="give">Dar ayuda</mat-radio-button>
+          <mat-radio-button ngDefaultControl formControlName="type" value="ask">Pidiendo ayuda</mat-radio-button>
+          <mat-radio-button ngDefaultControl formControlName="type" value="give">Ayudando</mat-radio-button>
         </mat-radio-group>
       </fieldset>
 
       <fieldset>
-        <legend>Por fecha:</legend>
-        <section class="date">
-          <mat-checkbox ngDefaultControl formControlName="date" value="one">One</mat-checkbox>
-          <mat-checkbox ngDefaultControl formControlName="date" value="two">Two</mat-checkbox>
+        <legend>Fecha</legend>
+        <section class="date" formGroupName="date">
+          <mat-checkbox ngDefaultControl formControlName="less1week" value="less-1-week"
+            >Queda una semana o menos<wbr /> (es esta semana)</mat-checkbox
+          >
+          <mat-checkbox ngDefaultControl formControlName="less2weeks" value="less-2-weeks"
+            >Quedan dos semanas o menos<wbr /> (es la semana que viene)</mat-checkbox
+          >
+          <mat-checkbox ngDefaultControl formControlName="less1month" value="less-1-month"
+            >Queda menos de un mes</mat-checkbox
+          >
+          <mat-checkbox ngDefaultControl formControlName="more1month" value="more-1-month"
+            >Queda más de un mes</mat-checkbox
+          >
+          <mat-checkbox ngDefaultControl formControlName="notdefined" value="not-defined">Sin definir</mat-checkbox>
         </section>
       </fieldset>
 
-      <!--
-          <fieldset>
-            <legend>Por lugar:</legend>
-            <mat-radio-group class="place">
-              <mat-radio-button ngDefaultControl formControlName="place" value="">Pedir ayuda</mat-radio-button>
-              <mat-radio-button ngDefaultControl formControlName="place" value="">Dar ayuda</mat-radio-button>
-            </mat-radio-group>
-          </fieldset>
-      -->
-
+      <fieldset>
+        <legend>Lugar</legend>
+        <mat-form-field>
+          <mat-label>Elige...</mat-label>
+          <select matNativeControl formControlName="place">
+            <optgroup *ngFor="let community of communities" [label]="community.name">
+              <option *ngFor="let province of community.provinces" value="{{ province.value }}">
+                {{ province.viewValue }}
+              </option>
+            </optgroup>
+          </select>
+        </mat-form-field>
+      </fieldset>
       <button mat-raised-button (click)="submit()">Aplicar Filtros</button>
     </form>
+
     <br />
     <br />
     <button (click)="sidenav.close()" class="sidenav-menu apply">
