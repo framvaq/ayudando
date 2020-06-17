@@ -43,7 +43,7 @@ REMEMBER TO DELETE opened="true"
         <legend>Lugar</legend>
         <mat-form-field>
           <mat-label>Elige...</mat-label>
-          <!-- TODO fix mat-* version & decide which I prefer (like this is more accesible out of the box) -->
+          <!-- TODO fix mat-* version & decide which I prefer (like this is more accesible out of the box) try to use mat hint to say that (in pc) is possible to write -->
           <select matNativeControl formControlName="place">
             <optgroup *ngFor="let community of communities" [label]="community.name">
               <option *ngFor="let province of community.provinces" value="{{ province.value }}">

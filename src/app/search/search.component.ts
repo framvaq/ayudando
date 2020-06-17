@@ -3,16 +3,7 @@ import { FormBuilder, FormArray, FormControl } from '@angular/forms';
 
 import { AnnouncementsService } from '../services/announcements.service';
 import { PLACES } from '../assets/places-values';
-
-interface Province {
-  value: string;
-  viewValue: string;
-}
-
-interface Communities {
-  name: string;
-  provinces: Province[];
-}
+import { Communities } from '../assets/places';
 
 @Component({
   selector: 'app-search',
@@ -52,24 +43,23 @@ export class SearchComponent implements OnInit {
   }
 
   submit() {
-    console.log('Valor de filters:', this.filters.value);
-    console.log('==================');
-    console.log('Valor de place:', this.filters.value.place);
-    console.log('==================');
-    console.log('Valor de type:', this.filters.value.type);
-    console.log('==================');
-    console.log('Valor de date:', this.filters.value.date);
-    console.log('Valores de less1week:', this.filters.value.date.less1week);
-    console.log('Valores de less2weeks:', this.filters.value.date.less2weeks);
-    console.log('Valores de less1month:', this.filters.value.date.less1month);
-    console.log('Valores de more1month:', this.filters.value.date.more1month);
-    console.log('Valores de notdefined:', this.filters.value.date.notdefined);
-    console.log('==================');
-    console.log('Valor de word:', this.filters.value.word);
-    console.log('Valor de number:', this.filters.value.number);
-    console.log('==================');
+    // console.log('Valor de place:', this.filters.value.place);
+    // console.log('==================');
+    // console.log('Valor de type:', this.filters.value.type);
+    // console.log('==================');
+    // console.log('Valor de date:', this.filters.value.date);
+    // console.log('Valores de less1week:', this.filters.value.date.less1week);
+    // console.log('Valores de less2weeks:', this.filters.value.date.less2weeks);
+    // console.log('Valores de less1month:', this.filters.value.date.less1month);
+    // console.log('Valores de more1month:', this.filters.value.date.more1month);
+    // console.log('Valores de notdefined:', this.filters.value.date.notdefined);
+    // console.log('==================');
+    // console.log('Valor de word:', this.filters.value.word);
+    // console.log('Valor de number:', this.filters.value.number);
+    // console.log('==================');
+    // console.log('Valor de filters en searchCOmponent.submit():', this.filters.value);
 
-    this.getAnnouncementsByDescription(this.filters.value.word);
+    this.getFilteredAnnouncements(this.filters.value);
   }
 
   getAnnouncementsLimitedByNumber(num) {
@@ -87,6 +77,12 @@ export class SearchComponent implements OnInit {
   getAnnouncementsByDescription(word) {
     return this.announcementsService
       .getAnnouncementsByDescription(word)
+      .subscribe(result => (this.announcements = result));
+  }
+
+  getFilteredAnnouncements(filters) {
+    return this.announcementsService
+      .getFilteredAnnouncements(filters)
       .subscribe(result => (this.announcements = result));
   }
 }

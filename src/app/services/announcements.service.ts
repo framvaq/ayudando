@@ -80,8 +80,8 @@ export class AnnouncementsService {
   }
 
   generateFiltersUrl(filters) {
-    //console.log('filters de generateFiletersUrl', filters);
-    //let consoleMessage = 'CONSOLEMESSAGE: filters.${filter} = ${filters[filter]}\n';
+    // console.log('filters de generateFiletersUrl', filters);
+    // let consoleMessage = 'CONSOLEMESSAGE: filters.${name} = ${filters[name]}\n';
 
     this.filtersUrl = this.iterateOverFilters(filters, '').slice(0, -1);
     console.log('generateFiltersUrl.filtersString = ', this.filtersUrl);
@@ -91,25 +91,34 @@ export class AnnouncementsService {
   ============ UTILITY FUNCTIONS===========
   */
   iterateOverFilters(filters, filtersString) {
-    //console.log('filters de generateFiletersUrl', filters);
-    //let consoleMessage = 'CONSOLEMESSAGE: filters.${filter} = ${filters[filter]}\n';
+    // console.log('filters de generateFiletersUrl', filters);
+    // let consoleMessage = 'CONSOLEMESSAGE: filters.${name} = ${filters[name]}\n';
 
-    // Iterate over filters, saving properties in filter variable
-    for (const filter in filters) {
-      //consoleMessage += `filters.${filter} = ${filters[filter]}` + '\n';
-      //console.log(filters[filter]);
+    // Iterate over filters, saving properties in name variable
+    for (const name in filters) {
+      // consoleMessage += `filters.${name} = ${filters[name]}` + '\n';
+      // console.log(filters[name]);
 
-      if (filters[filter] !== null) {
-        // If the property is an object, for in return object, I have to repeat the function
-        if (typeof filters[filter] === 'object') {
-          // debugger;
-          filtersString += this.iterateOverFilters(filters[filter], ''); // I have to send an empty string so it does not duplicate whatever was in it
-        } else if (filters[filter]) {
-          filtersString += filter + '=' + filters[filter] + '&'; // Will need to slice the final string
-        }
+      // If the property is an object, I have to iterate separately
+      if (typeof filters[name] === 'object' && filters[name] !== null) {
+        filtersString += this.iterateOverObject(filters[name]);
+      } else if (filters[name]) {
+        // Will need to slice the last character
+        filtersString += name + '=' + filters[name] + '&';
       }
     }
-    //console.log(consoleMessage);
+    // console.log(consoleMessage);
     return filtersString;
+  }
+
+  iterateOverObject(object) {
+    let url = '';
+    for (const name in object) {
+      if (object[name]) {
+        // This is the true/false value
+        url += 'date=' + name + '&';
+      }
+    }
+    return url;
   }
 }
