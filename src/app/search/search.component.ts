@@ -32,10 +32,8 @@ export class SearchComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private announcementsService: AnnouncementsService) {}
 
   ngOnInit(): void {
-    console.log('getannouncements');
+    // console.log('getannouncements');
     this.getAnnouncements();
-    console.log('getNUMBERannouncements');
-    // console.log(this.announcementsService.getNumberOfAnnouncements(2));
   }
 
   getAnnouncements() {

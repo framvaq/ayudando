@@ -79,16 +79,16 @@ export class AnnouncementsService {
     return this.http.get(`${this.baseUrl}/search.php?${this.filtersUrl}`);
   }
 
+  // ------------- HELPERS ------------- //
   generateFiltersUrl(filters) {
     // console.log('filters de generateFiletersUrl', filters);
     // let consoleMessage = 'CONSOLEMESSAGE: filters.${name} = ${filters[name]}\n';
-
     this.filtersUrl = this.iterateOverFilters(filters, '').slice(0, -1);
-    console.log('generateFiltersUrl.filtersString = ', this.filtersUrl);
+    console.log(this.filtersUrl);
   }
 
   /*
-  ============ UTILITY FUNCTIONS===========
+  
   */
   iterateOverFilters(filters, filtersString) {
     // console.log('filters de generateFiletersUrl', filters);
@@ -100,7 +100,7 @@ export class AnnouncementsService {
       // console.log(filters[name]);
 
       // If the property is an object, I have to iterate separately
-      if (typeof filters[name] === 'object' && filters[name] !== null) {
+      if (typeof filters[name] === 'object') {
         filtersString += this.iterateOverObject(filters[name]);
       } else if (filters[name]) {
         // Will need to slice the last character
