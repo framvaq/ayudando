@@ -2,51 +2,118 @@
 <div class="text">
   <p>Antes de comenzar, necesitamos que nos cuentes un poco más sobre ti...</p>
 </div>
-<form class="form">
+<form [formGroup]="data" class="form">
   <fieldset class="technic">
     <legend>
       Primero los detalles técnicos...
     </legend>
-    <label for="mail" id="lab-mail">Correo eletrónico</label>
-    <input type="email" id="mail" />
-    <p class="helper" id="helper-mail">Correo</p>
+    <div class="mail">
+      <mat-form-field>
+        <mat-label>Correo electrónico</mat-label>
+        <input
+          matInput
+          matNativeControl
+          formControlName="email"
+          placeholder="Escribe aquí tu email"
+          type="text"
+          required
+        />
+        <mat-hint>Utiliza una dirección de correo que utilices habitualmente</mat-hint>
+        <mat-error>{{ requiredErrorMessage }}</mat-error>
+      </mat-form-field>
+    </div>
 
-    <label for="pass" id="lab-pass">Contraseña</label>
-    <input type="password" id="pass" />
-    <p class="helper" id="helper-pass">Seguridad</p>
+    <div class="pass">
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          formControlName="pass"
+          matNativeControl
+          placeholder="Introduce aquí tu constraseña"
+          type="password"
+          required
+        />
+        <mat-hint align="start">Intenta que sea segura y fácil de recordar</mat-hint>
+        <mat-error align="end"> [[ input.value?.length ]] de [[length]] caracteres obligatorios</mat-error>
 
-    <label for="passver" id="lab-passver">Repite la contraseña</label>
-    <input type="password" id="passver" />
-    <p class="helper" id="helper-passver">iguales?</p>
+        <mat-error>{{ requiredErrorMessage }}</mat-error>
+      </mat-form-field>
+    </div>
 
-    <label for="cp" id="lab-cp">Código postal</label>
-    <input type="number" id="cp" min="0" max="99999" minlength="5" maxlength="5" />
-    <p class="helper" id="helper-cp">Ubicación aproximada</p>
+    <div class="passver">
+      <mat-form-field>
+        <mat-label>Repite la contraseña</mat-label>
+        <input
+          matInput
+          matNativeControl
+          formControlName="passver"
+          placeholder="Vuele a escribir la contraseña"
+          type="password"
+          required
+        />
+        <mat-error>{{ requiredErrorMessage }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="place">
+      <mat-form-field>
+        <mat-label>¿Dónde vives?</mat-label>
+        <!-- TODO fix mat-* version & decide which I prefer (like this is more accesible out of the box) try to use mat hint to say that (in pc) is possible to write -->
+        <select matNativeControl formControlName="place" required>
+          <optgroup *ngFor="let community of communities" [label]="community.name">
+            <option *ngFor="let province of community.provinces" value="{{ province.value }}">
+              {{ province.viewValue }}
+            </option>
+          </optgroup>
+        </select>
+        <mat-error>{{ requiredErrorMessage }}</mat-error>
+      </mat-form-field>
+    </div>
   </fieldset>
-
   <fieldset class="interesting">
     <legend>Ahora vamos con lo interesante!!</legend>
+    <mat-form-field>
+      <mat-label>Nombre de usuario</mat-label>
+      <input
+        matInput
+        matNativeControl
+        formControlName="user"
+        placeholder="Escribe aquí tu nombre"
+        type="text"
+        required
+      />
+      <mat-hint>Este nombre será el que verán las demás personas</mat-hint>
+      <mat-error>{{ requiredErrorMessage }}</mat-error>
+    </mat-form-field>
 
-    <label for="usrname" id="lab-usrname">Nombre de usuario</label>
-    <input type="text" id="usrname" />
-    <p class="helper" id="helper-usrname">Esto es lo que verán los usuarios</p>
-
-    <label for="options" id="lab-options">Voy a utilizar esto porque...</label>
-    <select id="options">
-      <option value="ask">Necesito ayuda</option>
-      <option value="give">Puedo ayudar</option>
-      <option value="both">Ambas</option>
-    </select>
+    <mat-form-field>
+      <mat-label>¿Para qué vas a usar la web?</mat-label>
+      <mat-select matNativeControl formControlName="type" required>
+        <mat-option value="ask">Pedir ayuda</mat-option>
+        <mat-option value="give">Ayudar</mat-option>
+        <mat-option value="both">Ambas cosas</mat-option>
+      </mat-select>
+      <mat-error>{{ requiredErrorMessage }}</mat-error>
+    </mat-form-field>
   </fieldset>
 
   <fieldset class="contact">
     <legend>No queremos ser pesados, tú decides cuándo nos ponemos en contacto contigo.</legend>
+    <section class="contact" formGroupName="contact" required>
+      <mat-checkbox ngDefaultControl formControlName="no" value="no">No</mat-checkbox>
+      <mat-checkbox ngDefaultControl formControlName="whencontact" value="when-contact"
+        >Cuando alguien contacte conmigo</mat-checkbox
+      >
+      <mat-checkbox ngDefaultControl formControlName="whenannouncement" value="when-announcement"
+        >Cando se publique un anuncio relevante</mat-checkbox
+      >
+      <mat-error>Hay que seleccionar una opción por lo menos</mat-error>
+    </section>
     <p class="helper">
       Aunque selecciones "no", te contactaremos por cuestiones importantes, normalmente de seguridad.
     </p>
-    <label><input type="checkbox" id="no" />No</label>
-    <label><input type="checkbox" id="when-contact" />Cuando alguien contacte conmigo</label>
-    <label><input type="checkbox" id="when-announcement" />Cando se publique un anuncio relevante</label>
   </fieldset>
-  <input type="submit" id="register" value="Registrarme" />
+
+  <button mat-raised-button color="primary" (click)="submit()">Registrarme</button>
 </form>
