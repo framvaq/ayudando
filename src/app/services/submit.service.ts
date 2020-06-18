@@ -1,10 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-
+import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -13,7 +11,7 @@ const httpOptions = {
 })
 export class SubmitService {
   baseUrl = environment.baseUrl;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookies: CookieService) {}
 
   createUser(register) {
     const data = this.iterateOverData(register.value);
@@ -25,6 +23,10 @@ export class SubmitService {
     const data = this.iterateOverData(user.value);
 
     return this.http.post(`${this.baseUrl}/login.php`, data, httpOptions);
+  }
+
+  setToken(token) {
+    this.cookies.set('token', token);
   }
   iterateOverData(values) {
     // console.log('values de iterateOverData', values);

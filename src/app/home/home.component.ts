@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   usuario = { sexo: 'h', nombre: 'ejemplo' };
-  constructor() {}
+  constructor(private cookies: CookieService) {}
 
   ngOnInit(): void {
     /*TODOcheckNotifications(){
@@ -22,5 +23,9 @@ export class HomeComponent implements OnInit {
     
 
     */
+  }
+
+  getToken() {
+    return this.cookies.get('token');
   }
 }

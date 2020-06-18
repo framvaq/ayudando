@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, FormControl } from '@angular/forms';
-
-import { AnnouncementsService } from '../services/announcements.service';
-import { PLACES } from '../assets/places-values';
+import { FormBuilder } from '@angular/forms';
 import { Communities } from '../assets/places';
+import { PLACES } from '../assets/places-values';
+import { AnnouncementsService } from '../services/announcements.service';
 
 @Component({
   selector: 'app-search',

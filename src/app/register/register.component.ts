@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
-import { SubmitService } from '../services/submit.service';
+import { Router } from '@angular/router';
 import { Communities } from '../assets/places';
 import { PLACES } from '../assets/places-values';
-import { Router } from '@angular/router';
+import { SubmitService } from '../services/submit.service';
 
 @Component({
   selector: 'app-register',

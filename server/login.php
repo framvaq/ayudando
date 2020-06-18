@@ -22,8 +22,20 @@ if ($postdata !== null && isset($postdata) && !empty($postdata)) {
         $name = $row['name'];
     }
 
-    $response = (!empty($user) && $user !== null && isset($user) && !empty($name) && $name !== null && isset($name));
+    class Result
+    {
+    }
+    $response = new Result;
     
+    if (!empty($user) && $user !== null && isset($user) && !empty($name) && $name !== null && isset($name)) {
+        // echo $user;
+        $response->res = 'true';
+        $response->token = $user;
+    } else {
+        $response->res = 'false';
+        $response->token = 'false';
+    }
+
     header('Content-Type: application/json');
     echo json_encode($response);
 }

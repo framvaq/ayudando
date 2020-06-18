@@ -1,9 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { Observable, of, from } from 'rxjs';
-import { filter } from 'rxjs/operators';
-
+import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Filters } from '../assets/filters';
 
