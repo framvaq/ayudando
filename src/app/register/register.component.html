@@ -100,12 +100,12 @@
 
   <fieldset class="contact">
     <legend>No queremos ser pesados, tú decides cuándo nos ponemos en contacto contigo.</legend>
-    <section class="contact" formGroupName="contact" required>
-      <mat-checkbox ngDefaultControl formControlName="no" value="no">No</mat-checkbox>
-      <mat-checkbox ngDefaultControl formControlName="whencontact" value="when-contact"
+    <section class="contact">
+      <mat-checkbox ngDefaultControl formControlName="contactno" value="contact-no">No</mat-checkbox>
+      <mat-checkbox ngDefaultControl formControlName="contactcontact" value="contact-contact"
         >Cuando alguien contacte conmigo</mat-checkbox
       >
-      <mat-checkbox ngDefaultControl formControlName="whenannouncement" value="when-announcement"
+      <mat-checkbox ngDefaultControl formControlName="contactannouncement" value="contact-announcement"
         >Cando se publique un anuncio relevante</mat-checkbox
       >
       <mat-error>Hay que seleccionar una opción por lo menos</mat-error>

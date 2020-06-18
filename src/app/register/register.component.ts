@@ -18,14 +18,9 @@ export class RegisterComponent implements OnInit {
     place: [null, Validators.required],
     user: [null, Validators.required],
     type: [null, Validators.required],
-    contact: this.formBuilder.group(
-      {
-        no: [false],
-        whencontact: [false],
-        whenannouncement: [false]
-      },
-      [Validators.required]
-    )
+    contactno: [false],
+    contactcontact: [false],
+    contactannouncement: [false]
   });
 
   requiredErrorMessage = 'Este campo es obligatorio';
@@ -45,22 +40,49 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    // console.log(this.data.value.email);
+    console.log('data.value = ', this.data.value);
 
     if (this.validate()) {
-      console.log('data.value = ', this.data.value);
+      console.log('valid');
+      // console.log(JSON.parse(this.data));
+
+      this.submitService.createUser(this.data);
     }
   }
 
   validate() {
+    console.log('validateEmail', this.validateEmail(this.data.value.email));
+    console.log('validatePass', this.validatePass(this.data.value.pass));
+    console.log('validatePassVer', this.validatePassver(this.data.value.pass, this.data.value.passver));
+    console.log('validatePlace', this.validatePlace(this.data.value.place));
+    console.log('validateUser', this.validateUser(this.data.value.user));
+    console.log('validateType', this.validateType(this.data.value.type));
+    console.log(
+      'validateContact',
+      this.validateContact(
+        this.data.value.contactno,
+        this.data.value.contactcontact,
+        this.data.value.contactannouncement
+      )
+    );
     return (
-      this.validateEmail(this.data.value.email) &&
-      this.validatePass(this.data.value.pass) &&
-      this.validatePassver(this.data.value.pass, this.data.value.passver) &&
-      this.validatePlace(this.data.value.place) &&
-      this.validateUser(this.data.value.user) &&
-      this.validateType(this.data.value.type) &&
-      this.validateContact(this.data.value.contact)
+      (this.validateEmail(this.data.value.email) &&
+        this.validatePass(this.data.value.pass) &&
+        this.validatePassver(this.data.value.pass, this.data.value.passver) &&
+        this.validatePlace(this.data.value.place) &&
+        this.validateUser(this.data.value.user) &&
+        this.validateType(this.data.value.type) &&
+        this.validateContact(
+          this.data.value.contactno,
+          this.data.value.contactcontact,
+          this.data.value.contactannouncement
+        )) ||
+      true /*
+
+REMEMBER TO CHANGE
+
+
+      */
     );
   }
 
@@ -72,8 +94,8 @@ export class RegisterComponent implements OnInit {
 
   validatePass(pass) {
     // Regular expression inspired by https://ihateregex.io/
-    // At least: 8 chars, one uppercase, one lowercase, one number and one special charachter(#?!@$ %^&*-)
-    return /^(?=.*?[A-ZÇÑ])(?=.*?[a-zçñ])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(pass);
+    // At least: 8 chars, one uppercase, one lowercase, one number and one special charachter(#?!@$ %^&*_-)
+    return /^(?=.*?[A-ZÇÑ])(?=.*?[a-zçñ])(?=.*?[0-9])(?=.*?[#?!@$ %^&*_-]).{8,}$/.test(pass);
   }
 
   validatePassver(pass, passver) {
@@ -93,8 +115,8 @@ export class RegisterComponent implements OnInit {
     return type === 'ask' || type === 'give' || type === 'both';
   }
 
-  validateContact(contact) {
+  validateContact(no, contact, announcement) {
     // console.log(contact.no);
-    return contact.no || contact.whencontact || contact.whenannouncement;
+    return no || contact || announcement;
   }
 }

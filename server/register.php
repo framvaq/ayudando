@@ -1,8 +1,16 @@
 <?php
 
 header("Access-Control-Allow-Origin: http://localhost:4200");
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
+$email = $request->email;
+echo $postdata;
+print "\r";
+var_dump($request);
+print "\r";
 
-require_once ('db.php');
+die;
+require_once('db.php');
 $password;
 $hash = password_hash($password, PASSWORD_DEFAULT);
-$user = uniqid();//FIXME maybe I need to add more_entropy
+$user = uniqid();// FIXME maybe I need to add more_entropy
