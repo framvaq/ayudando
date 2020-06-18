@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { SubmitService } from '../services/submit.service';
 import { Communities } from '../assets/places';
 import { PLACES } from '../assets/places-values';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   communities: Communities[] = PLACES;
 
-  constructor(private formBuilder: FormBuilder, private submitService: SubmitService) {}
+  constructor(private formBuilder: FormBuilder, private submitService: SubmitService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -40,49 +41,48 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    console.log('data.value = ', this.data.value);
+    // console.log('data.value = ', this.data.value);
 
     if (this.validate()) {
-      console.log('valid');
-      // console.log(JSON.parse(this.data));
+      // console.log('valid');
 
-      this.submitService.createUser(this.data);
+      this.submitService.createUser(this.data).subscribe(
+        response => console.log(response),
+        err => console.log(err)
+      );
+
+      this.router.navigate(['/login']);
     }
   }
 
   validate() {
-    console.log('validateEmail', this.validateEmail(this.data.value.email));
-    console.log('validatePass', this.validatePass(this.data.value.pass));
-    console.log('validatePassVer', this.validatePassver(this.data.value.pass, this.data.value.passver));
-    console.log('validatePlace', this.validatePlace(this.data.value.place));
-    console.log('validateUser', this.validateUser(this.data.value.user));
-    console.log('validateType', this.validateType(this.data.value.type));
-    console.log(
-      'validateContact',
+    // console.log('validateEmail', this.validateEmail(this.data.value.email));
+    // console.log('validatePass', this.validatePass(this.data.value.pass));
+    // console.log('validatePassVer', this.validatePassver(this.data.value.pass, this.data.value.passver));
+    // console.log('validatePlace', this.validatePlace(this.data.value.place));
+    // console.log('validateUser', this.validateUser(this.data.value.user));
+    // console.log('validateType', this.validateType(this.data.value.type));
+    // console.log(
+    //   'validateContact',
+    //   this.validateContact(
+    //     this.data.value.contactno,
+    //     this.data.value.contactcontact,
+    //     this.data.value.contactannouncement
+    //   )
+    // );
+
+    return (
+      this.validateEmail(this.data.value.email) &&
+      this.validatePass(this.data.value.pass) &&
+      this.validatePassver(this.data.value.pass, this.data.value.passver) &&
+      this.validatePlace(this.data.value.place) &&
+      this.validateUser(this.data.value.user) &&
+      this.validateType(this.data.value.type) &&
       this.validateContact(
         this.data.value.contactno,
         this.data.value.contactcontact,
         this.data.value.contactannouncement
       )
-    );
-    return (
-      (this.validateEmail(this.data.value.email) &&
-        this.validatePass(this.data.value.pass) &&
-        this.validatePassver(this.data.value.pass, this.data.value.passver) &&
-        this.validatePlace(this.data.value.place) &&
-        this.validateUser(this.data.value.user) &&
-        this.validateType(this.data.value.type) &&
-        this.validateContact(
-          this.data.value.contactno,
-          this.data.value.contactcontact,
-          this.data.value.contactannouncement
-        )) ||
-      true /*
-
-REMEMBER TO CHANGE
-
-
-      */
     );
   }
 

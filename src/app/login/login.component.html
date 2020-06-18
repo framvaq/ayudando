@@ -1,12 +1,38 @@
 <h1>Bienvenid@</h1>
 <p>Inicia sesión o <a id="register" routerLink="/registro">regístrate</a> para continuar</p>
-<form class="form form-login">
-  <label for="username" id="usrlabel">Usuario</label>
-  <input type="text" id="username" />
-  <label for="password" id="paslabel">Contraseña</label>
-  <input type="password" id="password" />
-  <input type="submit" value="Enviar" />
+<form [formGroup]="data" class="form">
+  <div class="mail">
+    <mat-form-field>
+      <mat-label>Correo electrónico</mat-label>
+      <input
+        matInput
+        matNativeControl
+        formControlName="mail"
+        placeholder="Escribe aquí tu email"
+        type="text"
+        required
+      />
+      <mat-hint>Utiliza una dirección de correo que utilices habitualmente</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="pass">
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        formControlName="pass"
+        matNativeControl
+        placeholder="Introduce aquí tu constraseña"
+        type="password"
+        required
+      />
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="submit()">Registrarme</button>
 </form>
+
 <!--
   MATERIAL EXAMPLE && add security in php
   ----------------

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -14,12 +16,16 @@ export class SubmitService {
   constructor(private http: HttpClient) {}
 
   createUser(register) {
-    // console.log('hola');
-    const data = register.value;
-    this.iterateOverData(data);
-    return this.http.post(`${this.baseUrl}/register.php`, register);
+    const data = this.iterateOverData(register.value);
+
+    return this.http.post(`${this.baseUrl}/register.php`, data, httpOptions);
   }
 
+  login(user) {
+    const data = this.iterateOverData(user.value);
+
+    return this.http.post(`${this.baseUrl}/login.php`, data, httpOptions);
+  }
   iterateOverData(values) {
     // console.log('values de iterateOverData', values);
     // let consoleMessage = 'CONSOLEMESSAGE: values.${name} = ${values[name]}\n';
@@ -28,15 +34,17 @@ export class SubmitService {
     for (const name in values) {
       if (values[name] !== null && values[name] !== undefined && values[name] !== false) {
         // consoleMessage += `values.${name} = ${values[name]}` + '\n';
-        JSONstring += '"' + name + '": "' + values[name] + '", ';
+        if (name.includes('contact')) {
+          JSONstring += '"contact": "' + name + '", ';
+        } else {
+          JSONstring += '"' + name + '": "' + values[name] + '", ';
+        }
       }
     }
     JSONstring = JSONstring.slice(0, -2) + '}';
     // console.log(consoleMessage);
-    console.log(JSONstring);
-    /*
-{"email": fdfdss, "pass": fsdf, "passver": fsdfs, "place": formentera, "user": fsdf, "type": give, "contactno": true}
-    */
+    // console.log(JSONstring);
+    return JSONstring;
   }
 
   /* TODO handleErrors
