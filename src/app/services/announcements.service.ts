@@ -64,7 +64,6 @@ export class AnnouncementsService {
    * @param id The id from the announcement I want to retrieve
    */
   getAnnouncementById(id) {
-    // TODOthink of php filename
     return this.http.get(`${this.baseUrl}/search.php?id=${id}`);
   }
 

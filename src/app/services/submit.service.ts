@@ -28,6 +28,7 @@ export class SubmitService {
   setToken(token) {
     this.cookies.set('token', token);
   }
+
   iterateOverData(values) {
     // console.log('values de iterateOverData', values);
     // let consoleMessage = 'CONSOLEMESSAGE: values.${name} = ${values[name]}\n';

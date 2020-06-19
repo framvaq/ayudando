@@ -26,9 +26,9 @@ export class LoginComponent implements OnInit {
   submit() {
     this.submitService.login(this.data).subscribe(response => {
       // console.log(response);
-      if (response['res']) {
-        this.submitService.setToken(response['token']);
-        console.log(response['token']);
+      if (response.res) {
+        this.submitService.setToken(response.token);
+        console.log('response.token', response.token);
 
         this.router.navigate(['/inicio']);
       } else {

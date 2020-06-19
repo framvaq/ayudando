@@ -13,6 +13,7 @@ $num;
 $type;
 $place;
 $desc;
+$useWhere = false;
 /*
 $url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $query = (parse_url($url, PHP_URL_QUERY));
@@ -32,18 +33,22 @@ if ($haveParams) {
     if ($issetType) {
         $type = $_GET['type'];
         $typeQuery = "type='$type'";
+        $useWhere = true;
     }
     if ($issetPlace) {
         $place = $_GET['place'];
         $placeQuery = "place='$place'";
+        $useWhere = true;
     }
     if ($issetDesc) {
         $desc = $_GET['word'];
         $descQuery = "MATCH(description) AGAINST('$desc' IN NATURAL LANGUAGE MODE)";
+        $useWhere = true;
     }
     if ($issetDate) {
         $date = $_GET['date'];
         $dateQuery = '';
+        //$useWhere = true;
     }
 
     // Get parameters
@@ -54,15 +59,16 @@ if ($haveParams) {
     $issetDate ? array_push($queryArr, $dateQuery) : null;
 
     // Build query
-    $consult = "SELECT * FROM announcements WHERE ";
+    $consult = $useWhere ? "SELECT * FROM announcements WHERE ": "SELECT * FROM announcements";
     $queryVars = implode(" AND ", $queryArr);
-    //var_dump($queryVars);
-    // $queryVars = mb_substr($queryVars, 0, strlen($queryVars)-5);
-    $issetNumber ? $queryVars .= ' LIMIT ' . $numQuery: null;
+    // var_dump($queryVars);
+    $queryVars = (count($queryArr) > 1) ? mb_substr($queryVars, 0, strlen($queryVars)-5):$queryVars;
+
+    $queryVars = $issetNumber ? $queryVars . ' LIMIT ' . $numQuery: $queryVars;
     // echo $queryVars;
     // --------- TODO DATE --------- //
     $fullQuery = $consult . $queryVars;
-    // echo $fullQuery;
+    echo $fullQuery;
     // print("\n");
 
     // Execute query
