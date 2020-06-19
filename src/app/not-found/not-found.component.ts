@@ -7,10 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-  retry;
+  retry = this.router.url;
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.retry = this.router.url;
-  }
+  ngOnInit(): void {}
 }

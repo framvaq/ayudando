@@ -56,13 +56,12 @@ if ($haveParams) {
     $issetType ? array_push($queryArr, $typeQuery) : null;
     $issetPlace ? array_push($queryArr, $placeQuery) : null;
     $issetDesc ? array_push($queryArr, $descQuery) : null;
-    $issetDate ? array_push($queryArr, $dateQuery) : null;
+    // $issetDate ? array_push($queryArr, $dateQuery) : null;
 
     // Build query
     $consult = $useWhere ? "SELECT * FROM announcements WHERE ": "SELECT * FROM announcements";
     $queryVars = implode(" AND ", $queryArr);
     // var_dump($queryVars);
-    $queryVars = (count($queryArr) > 1) ? mb_substr($queryVars, 0, strlen($queryVars)-5):$queryVars;
 
     $queryVars = $issetNumber ? $queryVars . ' LIMIT ' . $numQuery: $queryVars;
     // echo $queryVars;
