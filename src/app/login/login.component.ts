@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit {
         this.submitService.setToken(response['token']);
         console.log('response.token', response['token']);
         /* tslint:enable:no-string-literal */
-
-        this.router.navigate(['/inicio']);
       } else {
         alert('Usuario o contraseña incorrectos');
       }
