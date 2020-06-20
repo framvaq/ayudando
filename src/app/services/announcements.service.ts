@@ -33,7 +33,9 @@ export class AnnouncementsService {
    * Returns the announcements published by te specified user
    * @param user The user that published the announcements
    */
-  getAnnouncementsByUser(user) {}
+  getAnnouncementsByUser(user) {
+    return this.http.get(`${this.baseUrl}/search.php?user=${user}`);
+  }
 
   /**
    * Returns the specified type of announce
@@ -68,7 +70,7 @@ export class AnnouncementsService {
   }
 
   getFilteredAnnouncements(filters) {
-    // console.log('filters de fuera', filters);
+    console.log('filters de fuera', filters);
     this.filters = filters;
     this.generateFiltersUrl(this.filters);
     return this.http.get(`${this.baseUrl}/search.php?${this.filtersUrl}`);

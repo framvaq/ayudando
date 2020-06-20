@@ -13,11 +13,12 @@ const httpOptions = {
 export class SubmitService {
   baseUrl = environment.baseUrl;
   isLoggedIn = false;
+  userId;
+
   constructor(private http: HttpClient, private cookies: CookieService, private router: Router) {}
 
   createUser(register) {
     const data = this.iterateOverData(register.value);
-
     return this.http.post(`${this.baseUrl}/register.php`, data, httpOptions);
   }
 
@@ -26,10 +27,11 @@ export class SubmitService {
 
     return this.http.post(`${this.baseUrl}/login.php`, data, httpOptions).subscribe(response => {
       // console.log(response);
+
       /* tslint:disable:no-string-literal */
       if (response['res'] !== null) {
         this.setToken(response['token']);
-        console.log('response.token', response['token']);
+        console.log('response', response['token']);
         /* tslint:enable:no-string-literal */
         this.router.navigate(['inicio']);
         this.isLoggedIn = true;
@@ -48,6 +50,10 @@ export class SubmitService {
 
   setToken(token) {
     this.cookies.set('token', token);
+  }
+
+  getToken() {
+    return this.cookies.get('token');
   }
 
   iterateOverData(values) {

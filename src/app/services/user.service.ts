@@ -6,5 +6,8 @@ import { SubmitService } from './submit.service';
   providedIn: 'root'
 })
 export class UserServiceService {
-  constructor(private cookies: CookieService, private submit: SubmitService) {}
+  id;
+  constructor(private cookies: CookieService, private submit: SubmitService) {
+    this.id = submit.userId;
+  }
 }
