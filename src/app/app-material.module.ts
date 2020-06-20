@@ -9,6 +9,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { MatSliderModule } from '@angular/material/slider';
     MatRadioModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTabsModule
   ],
   exports: [
     MatInputModule,
@@ -33,7 +35,8 @@ import { MatSliderModule } from '@angular/material/slider';
     MatRadioModule,
     MatSelectModule,
     MatAutocompleteModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTabsModule
   ]
 })
 export class AppMaterialModule {}
