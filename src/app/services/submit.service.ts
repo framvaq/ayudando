@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,7 +12,8 @@ const httpOptions = {
 })
 export class SubmitService {
   baseUrl = environment.baseUrl;
-  constructor(private http: HttpClient, private cookies: CookieService) {}
+  isLoggedIn = false;
+  constructor(private http: HttpClient, private cookies: CookieService, private router: Router) {}
 
   createUser(register) {
     const data = this.iterateOverData(register.value);
@@ -22,7 +24,26 @@ export class SubmitService {
   login(user) {
     const data = this.iterateOverData(user.value);
 
-    return this.http.post(`${this.baseUrl}/login.php`, data, httpOptions);
+    return this.http.post(`${this.baseUrl}/login.php`, data, httpOptions).subscribe(response => {
+      // console.log(response);
+      /* tslint:disable:no-string-literal */
+      if (response['res'] !== null) {
+        this.setToken(response['token']);
+        console.log('response.token', response['token']);
+        /* tslint:enable:no-string-literal */
+        this.router.navigate(['inicio']);
+        this.isLoggedIn = true;
+        return true;
+      } else {
+        alert('Usuario o contraseña incorrectos');
+        return false;
+      }
+    });
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    return false;
   }
 
   setToken(token) {

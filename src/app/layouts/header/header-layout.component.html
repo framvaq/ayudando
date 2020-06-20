@@ -10,6 +10,7 @@
       <ul>
         <li *ngFor="let nav of navs">
           <a
+            *ngIf="nav.url == '/login'; else notLoginBlock"
             [routerLink]="nav.url"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -17,6 +18,16 @@
           >
             {{ nav.content }}
           </a>
+          <ng-template #notLoginBlock>
+            <a
+              [routerLink]="nav.url"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="displayNav = false"
+            >
+              {{ nav.content }}
+            </a>
+          </ng-template>
         </li>
       </ul>
     </nav>

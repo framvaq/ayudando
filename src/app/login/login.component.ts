@@ -24,17 +24,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   submit() {
-    this.submitService.login(this.data).subscribe(response => {
-      // console.log(response);
-      /* tslint:disable:no-string-literal */
-      if (response['res']) {
-        this.submitService.setToken(response['token']);
-        console.log('response.token', response['token']);
-        /* tslint:enable:no-string-literal */
-      } else {
-        alert('Usuario o contraseña incorrectos');
-      }
-    });
+    this.submitService.login(this.data);
   }
   ngOnInit(): void {}
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SubmitService } from 'src/app/services/submit.service';
 
 @Component({
   selector: 'app-header-layout',
@@ -16,10 +17,15 @@ export class HeaderLayoutComponent {
 
   displayNav = false;
 
+  constructor(private submitService: SubmitService) {}
   toggleNav() {
     this.displayNav = !this.displayNav;
     //
     console.log('toggleNav()');
     //
+  }
+
+  logout() {
+    this.submitService.logout();
   }
 }

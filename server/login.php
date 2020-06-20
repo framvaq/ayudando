@@ -32,8 +32,7 @@ if ($postdata !== null && isset($postdata) && !empty($postdata)) {
         $response->res = 'true';
         $response->token = $user;
     } else {
-        $response->res = 'false';
-        $response->token = 'false';
+        $response->res = null;
     }
 
     header('Content-Type: application/json');

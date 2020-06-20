@@ -3,21 +3,25 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'inicio', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canLoad: [AuthGuard] },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+    canActivate: [AuthGuard]
+  },
   {
     path: 'panel-usuario',
     loadChildren: () => import('./userPanel/userPanel.module').then(m => m.UserPanelModule),
-    canLoad: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'nuevo-anuncio',
     loadChildren: () => import('./create/create.module').then(m => m.CreateModule),
-    canLoad: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'buscar',
     loadChildren: () => import('./search/search.module').then(m => m.SearchModule),
-    canLoad: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -33,7 +37,7 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule),
-    canLoad: [AuthGuard]
+    canActivate: [AuthGuard]
   }
 ];
 
