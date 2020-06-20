@@ -36,25 +36,14 @@ export class SearchComponent implements OnInit {
   }
 
   getAnnouncements() {
-    return this.announcementsService.getAnnouncements().subscribe(result => (this.announcements = result));
+    return this.announcementsService.getAnnouncements().subscribe(result => {
+      // console.log(result);
+      return (this.announcements = result);
+    });
   }
 
   submit() {
-    // console.log('Valor de place:', this.filters.value.place);
-    // console.log('==================');
-    // console.log('Valor de type:', this.filters.value.type);
-    // console.log('==================');
-    // console.log('Valor de date:', this.filters.value.date);
-    // console.log('Valores de less1week:', this.filters.value.date.less1week);
-    // console.log('Valores de less2weeks:', this.filters.value.date.less2weeks);
-    // console.log('Valores de less1month:', this.filters.value.date.less1month);
-    // console.log('Valores de more1month:', this.filters.value.date.more1month);
-    // console.log('Valores de notdefined:', this.filters.value.date.notdefined);
-    // console.log('==================');
-    // console.log('Valor de word:', this.filters.value.word);
-    // console.log('Valor de number:', this.filters.value.number);
-    // console.log('==================');
-    // console.log('Valor de filters en searchCOmponent.submit():', this.filters.value);
+    // TODO if there's only one filter, use that method
 
     this.getFilteredAnnouncements(this.filters.value);
   }
