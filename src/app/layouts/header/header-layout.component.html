@@ -14,7 +14,7 @@
             [routerLink]="nav.url"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            (click)="displayNav = false"
+            (click)="displayNav = false; logout()"
           >
             {{ nav.content }}
           </a>
