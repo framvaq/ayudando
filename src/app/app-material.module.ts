@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { MatTableModule } from '@angular/material/table';
     MatAutocompleteModule,
     MatSliderModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatDatepickerModule
   ],
   exports: [
     MatInputModule,
@@ -39,7 +41,8 @@ import { MatTableModule } from '@angular/material/table';
     MatAutocompleteModule,
     MatSliderModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatDatepickerModule
   ]
 })
 export class AppMaterialModule {}
