@@ -1,6 +1,19 @@
 mat-tab {
-  display: grid;
-  grid-template-columns: 1vw;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+
+  .mat-column-date {
+    padding-right: 0px;
+    padding-left: 10px;
+  }
+
+  .mat-column-message {
+    width: 50%;
+    padding-right: 20px;
+  }
 }
 
 h2 {

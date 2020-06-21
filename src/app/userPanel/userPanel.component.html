@@ -38,8 +38,32 @@
     </div>
   </mat-tab>
   <mat-tab label="Ver mis mensajes">
-    <div *ngFor="let message of messages">
-      {{ message | json }}
-    </div>
+    <table mat-table [dataSource]="messages" class="mat-elevation-z6">
+      <!--
+      <ng-container matColumnDef="{{ column }}" *ngFor="let column of messagesColumns">
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="messagesColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: messagesColumns"></tr>
+      -->
+      <ng-container matColumnDef="user_id">
+        <th mat-header-cell *matHeaderCellDef>Sent By</th>
+        <td mat-cell *matCellDef="let row">{{ row.user_id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="message" class="messageColumn">
+        <th mat-header-cell *matHeaderCellDef>Message</th>
+        <td mat-cell *matCellDef="let row">{{ row.message }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let row">{{ row.date | date }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="messagesColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: messagesColumns"></tr>
+    </table>
   </mat-tab>
 </mat-tab-group>

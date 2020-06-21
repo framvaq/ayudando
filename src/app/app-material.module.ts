@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatAutocompleteModule,
     MatSliderModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule
   ],
   exports: [
     MatInputModule,
@@ -36,7 +38,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatAutocompleteModule,
     MatSliderModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule
   ]
 })
 export class AppMaterialModule {}
