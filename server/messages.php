@@ -7,9 +7,9 @@ $postdata = file_get_contents("php://input");
 
 if ($postdata !== null && isset($postdata) && !empty($postdata)) {
     $data = json_decode($postdata);
-    $id = is_numeric($data->user) ? intval($data->user): die;
+    $id = trim(htmlspecialchars($data->user));
 
-    $consult = "SELECT * FROM answers WHERE user_id=$id";
+    $consult = "SELECT * FROM messages WHERE user_id=$id";
     $query = $db->prepare($consult);
     $query->execute();
     $messages = $query->fetchAll(PDO::FETCH_OBJ);
