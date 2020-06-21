@@ -10,7 +10,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class SubmitService {
+export class AuthService {
   baseUrl = environment.baseUrl;
   isLoggedIn = false;
   userId;

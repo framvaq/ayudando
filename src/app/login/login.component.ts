@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { SubmitService } from '../services/submit.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +18,13 @@ export class LoginComponent implements OnInit {
   isSuccesful;
   constructor(
     private formBuilder: FormBuilder,
-    private submitService: SubmitService,
+    private authService: AuthService,
     private router: Router,
     private cookies: CookieService
   ) {}
 
   submit() {
-    this.submitService.login(this.data);
+    this.authService.login(this.data);
   }
   ngOnInit(): void {}
 }

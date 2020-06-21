@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Communities } from '../assets/places';
 import { PLACES } from '../assets/places-values';
-import { SubmitService } from '../services/submit.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
 
   communities: Communities[] = PLACES;
 
-  constructor(private formBuilder: FormBuilder, private submitService: SubmitService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
     if (this.validate()) {
       // console.log('valid');
 
-      this.submitService.createUser(this.data).subscribe(
+      this.authService.createUser(this.data).subscribe(
         response => console.log(response),
         err => console.log(err)
       );

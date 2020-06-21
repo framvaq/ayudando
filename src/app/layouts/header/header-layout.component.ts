@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SubmitService } from 'src/app/services/submit.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header-layout',
@@ -17,12 +17,10 @@ export class HeaderLayoutComponent {
 
   displayNav = false;
 
-  constructor(private submitService: SubmitService) {}
+  constructor(private submitService: AuthService) {}
   toggleNav() {
     this.displayNav = !this.displayNav;
-    //
-    console.log('toggleNav()');
-    //
+    // console.log('toggleNav()');
   }
 
   logout() {

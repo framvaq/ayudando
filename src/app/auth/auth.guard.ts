@@ -11,13 +11,13 @@ import {
   UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { SubmitService } from '../services/submit.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor(private submitService: SubmitService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   isLoggedIn() {
-    if (this.submitService.isLoggedIn) {
+    if (this.authService.isLoggedIn) {
       return true;
     } else {
       this.router.navigateByUrl('/login');
