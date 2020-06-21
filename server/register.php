@@ -11,48 +11,27 @@ if ($postdata !== null && isset($postdata) && !empty($postdata)) {
     // echo"data = ";
     // var_dump($data);
     
-    $userid = uniqid();
-    /*TODO
-
-
-
-    SAFE PASSWORD
-
-
-
-    */
-    $hash = password_hash($pass, PASSWORD_DEFAULT);
+    $userid = uniqid("prefix", true);
     // Clean strings
     $username = trim(htmlspecialchars($data->user));
     $type = trim(htmlspecialchars($data->type));
     $place = trim(htmlspecialchars($data->place));
-    $pass = trim(htmlspecialchars($data->pass));
     $mail = trim(htmlspecialchars($data->email));
-    $contact = trim(htmlspecialchars($data->contact)); // Change to "play" with numbers
-    switch ($contact) {
-        case 'contactno':
-            $contact = 'contactno';
-            break;
-        
-        case 'contactcontact':
-            $contact = 'contactcontact';
-            break;
-        
-        case 'contactannouncement':
-            $contact = 'contactannouncement';
-            break;
-    }
+    $contact = trim(htmlspecialchars($data->contact));
+    $usrpass = trim(htmlspecialchars($data->pass));
+    $pass = password_hash($usrpass, PASSWORD_DEFAULT);
 
-    $query = $db->prepare("INSERT INTO users (id, name, type, place, pass, mail, contact, rating) VALUES (NULL, :username, :type, :place, :pass, :mail, :contact, NULL)");
+    $query = $db->prepare("INSERT INTO users (id, name, type, place, pass, mail, contact, rating) VALUES (:id, :username, :type, :place, :pass, :mail, :contact, NULL)");
     
     // $query->bindParam(':userid', $userid, PDO::PARAM_STR);
+    $query->bindParam(':id', $userid, PDO::PARAM_STR);
     $query->bindParam(':username', $username, PDO::PARAM_STR);
     $query->bindParam(':type', $type, PDO::PARAM_STR);
     $query->bindParam(':place', $place, PDO::PARAM_STR);
     $query->bindParam(':pass', $pass, PDO::PARAM_STR);
     $query->bindParam(':mail', $mail, PDO::PARAM_STR);
     $query->bindParam(':contact', $contact, PDO::PARAM_STR);
-    
+    var_dump($query);
     $query->execute();
 
     // echo"query = ";

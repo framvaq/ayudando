@@ -10,16 +10,16 @@ if ($postdata !== null && isset($postdata) && !empty($postdata)) {
     $data = json_decode($postdata);
     
     $mail = trim(htmlspecialchars($data->mail));
-    $pass = trim(htmlspecialchars($data->pass));
+    $usrPass = trim(htmlspecialchars($data->pass));
 
-    $query = $db->prepare("SELECT id, name FROM users WHERE mail=:mail AND pass=:pass");
+    $query = $db->prepare("SELECT id, name, pass FROM users WHERE mail=:mail");
     $query->bindParam(':mail', $mail, PDO::PARAM_STR);
-    $query->bindParam(':pass', $pass, PDO::PARAM_STR);
 
     $query->execute();
     while ($row = $query->fetch()) {
         $user = $row['id'];
         $name = $row['name'];
+        $realPass = $row['pass'];
     }
 
     class Result
@@ -27,7 +27,7 @@ if ($postdata !== null && isset($postdata) && !empty($postdata)) {
     }
     $response = new Result;
     
-    if (!empty($user) && $user !== null && isset($user) && !empty($name) && $name !== null && isset($name)) {
+    if (!empty($user) && $user !== null && isset($user) && !empty($name) && $name !== null && isset($name) && password_verify($usrPass, $realPass)) {
         // echo $user;
         $response->res = 'true';
         $response->token = $user;
