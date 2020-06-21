@@ -12,6 +12,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatSliderModule,
     MatTabsModule,
     MatTableModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   exports: [
     MatInputModule,
@@ -42,7 +44,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatSliderModule,
     MatTabsModule,
     MatTableModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatMomentDateModule
   ]
 })
 export class AppMaterialModule {}
