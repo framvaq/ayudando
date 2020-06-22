@@ -10,6 +10,7 @@ if ($postdata !== null && isset($postdata) && !empty($postdata)) {
     $data = json_decode($postdata);
     // echo"data = ";
     // var_dump($data);
+    // die;
     
     $userid = uniqid("prefix", true);
     // Clean strings
@@ -31,7 +32,7 @@ if ($postdata !== null && isset($postdata) && !empty($postdata)) {
     $query->bindParam(':pass', $pass, PDO::PARAM_STR);
     $query->bindParam(':mail', $mail, PDO::PARAM_STR);
     $query->bindParam(':contact', $contact, PDO::PARAM_STR);
-    var_dump($query);
+    // var_dump($query);
     $query->execute();
 
     // echo"query = ";

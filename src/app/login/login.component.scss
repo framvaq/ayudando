@@ -1,12 +1,13 @@
 .form {
   display: grid;
-  grid-template-columns: auto 0.8fr;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    'usrlabel username'
-    'paslabel password'
-    'subbutton subbutton';
+    'mail'
+    'pas'
+    'button';
   row-gap: 20px;
   column-gap: 10px;
+  justify-items: center;
   label {
     justify-self: right;
     #usrlabel {

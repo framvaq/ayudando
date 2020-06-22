@@ -1,17 +1,64 @@
 <app-header-layout></app-header-layout>
 <h1>Crear anuncio</h1>
-<form class="form form-create">
-  <label for="title">Título </label>
-  <input type="text" id="title" matInput autofocus placeholder="Nombre del anuncio" required />
+<form class="form form-create" [formGroup]="data">
+  <mat-form-field appearance="fill">
+    <mat-label>Título del anuncio</mat-label>
+    <input
+      matInput
+      matNativeControl
+      formControlName="title"
+      placeholder="Escribe aquí el título"
+      type="text"
+      required
+      autofocus
+    />
+    <mat-hint>
+      Elige un título corto y descriptivo, por ejemplo: "Necesito ayuda para....", o "Ofrezco ayuda para..."
+    </mat-hint>
+    <mat-error>{{ requiredErrorMessage }}</mat-error>
+  </mat-form-field>
 
-  <label for="description">Descripción </label>
-  <textarea id="description"></textarea>
+  <mat-form-field appearance="fill">
+    <mat-label>Descripción</mat-label>
+    <textarea
+      matInput
+      matNativeControl
+      formControlName="description"
+      placeholder="Define aquí tu anuncio, explica lo que necesitas o puedes hacer"
+      type="text"
+      required
+    ></textarea>
+    <mat-hint>{{ data.value.description?.length || 0 }}/1000 </mat-hint>
+    <mat-error>{{ requiredErrorMessage }}</mat-error>
+  </mat-form-field>
 
-  <label for="date">Fecha </label>
-  <input type="date" id="date" />
+  <mat-form-field appearance="fill">
+    <mat-label>¿Qué tipo de anuncio es?</mat-label>
+    <mat-select matNativeControl formControlName="type" required>
+      <mat-option value="ask">Pedir ayuda</mat-option>
+      <mat-option value="give">Ayudar</mat-option>
+    </mat-select>
+    <mat-error>{{ requiredErrorMessage }}</mat-error>
+  </mat-form-field>
 
-  <label for="place">Lugar </label>
-  <input type="text" matInput placeholder="Si es relevante" id="place" />
+  <mat-form-field>
+    <mat-label>¿Para cuándo?</mat-label>
+    <input matInput [min]="minDate" [matDatepicker]="date" />
+    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+    <mat-datepicker #date></mat-datepicker>
+  </mat-form-field>
 
-  <input type="button" value="Publicar" id="publish" />
+  <mat-form-field>
+    <mat-label>¿Dónde?</mat-label>
+    <select matNativeControl formControlName="place">
+      <optgroup *ngFor="let community of communities" [label]="community.name">
+        <option *ngFor="let province of community.provinces" value="{{ province.value }}">
+          {{ province.viewValue }}
+        </option>
+      </optgroup>
+    </select>
+    <mat-error>{{ requiredErrorMessage }}</mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="submit()">Crear anuncio</button>
 </form>

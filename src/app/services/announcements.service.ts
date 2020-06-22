@@ -1,18 +1,22 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Filters } from '../assets/filters';
+import { CookieService } from 'ngx-cookie-service';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnnouncementsService {
-  id = 1;
   baseUrl = environment.baseUrl;
   filters: Filters;
   filtersUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookies: CookieService) {}
   /**
    * Returns all announcements
    */
@@ -70,10 +74,18 @@ export class AnnouncementsService {
   }
 
   getFilteredAnnouncements(filters) {
-    console.log('filters de fuera', filters);
+    // console.log('filters de fuera', filters);
     this.filters = filters;
     this.generateFiltersUrl(this.filters);
     return this.http.get(`${this.baseUrl}/search.php?${this.filtersUrl}`);
+  }
+
+  insertAnnouncement(data) {
+    let announcement = this.iterateOverData(data);
+    announcement = announcement.slice(0, -1) + ', "user_id": "' + this.cookies.get('token') + '"}';
+    console.log(announcement);
+
+    return this.http.post(`${this.baseUrl}/createAnnouncement.php`, announcement, httpOptions);
   }
 
   // ------------- HELPERS ------------- //
@@ -117,5 +129,26 @@ export class AnnouncementsService {
       }
     }
     return url;
+  }
+
+  iterateOverData(values) {
+    // console.log('values de iterateOverData', values);
+    // let consoleMessage = 'CONSOLEMESSAGE: values.${name} = ${values[name]}\n';
+    let JSONstring = '{';
+
+    for (const name in values) {
+      if (values[name] !== null && values[name] !== undefined && values[name] !== false) {
+        // consoleMessage += `values.${name} = ${values[name]}` + '\n';
+        if (name.includes('contact')) {
+          JSONstring += '"contact": "' + name + '", ';
+        } else {
+          JSONstring += '"' + name + '": "' + values[name] + '", ';
+        }
+      }
+    }
+    JSONstring = JSONstring.slice(0, -2) + '}';
+    // console.log(consoleMessage);
+    // console.log(JSONstring);
+    return JSONstring;
   }
 }
