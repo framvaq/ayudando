@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Communities } from '../assets/places';
 import { PLACES } from '../assets/places-values';
 import { AnnouncementsService } from '../services/announcements.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -28,7 +29,11 @@ export class CreateComponent implements OnInit {
   thisDay;
   minDate;
 
-  constructor(private formBuilder: FormBuilder, private announcementsService: AnnouncementsService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private announcementsService: AnnouncementsService,
+    private router: Router
+  ) {
     this.thisYear = new Date().getFullYear();
     this.thisMonth = 1 + new Date().getMonth();
     this.thisDay = new Date().getDate();
@@ -42,6 +47,7 @@ export class CreateComponent implements OnInit {
     // console.log('form is valid? ', this.validate());
     if (this.validate()) {
       this.announcementsService.insertAnnouncement(this.data.value);
+      this.router.navigate(['inicio']);
     }
   }
 
