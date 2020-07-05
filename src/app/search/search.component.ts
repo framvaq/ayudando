@@ -30,12 +30,8 @@ export class SearchComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private announcementsService: AnnouncementsService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     // console.log('getannouncements');
-    this.getAnnouncements();
-  }
-
-  getAnnouncements() {
     return this.announcementsService.getAnnouncements().subscribe(result => {
       // console.log(result);
       return (this.announcements = result);
@@ -43,32 +39,8 @@ export class SearchComponent implements OnInit {
   }
 
   submit() {
-    // TODO if there's only one filter, use that method
-
-    this.getFilteredAnnouncements(this.filters.value);
-  }
-
-  getAnnouncementsLimitedByNumber(num) {
-    return this.announcementsService.getNumberOfAnnouncements(num).subscribe(result => (this.announcements = result));
-  }
-
-  getAnnouncementsByType(type) {
-    return this.announcementsService.getAnnouncementsByType(type).subscribe(result => (this.announcements = result));
-  }
-
-  getAnnouncementsByPlace(place) {
-    return this.announcementsService.getAnnouncementsByPlace(place).subscribe(result => (this.announcements = result));
-  }
-
-  getAnnouncementsByDescription(word) {
     return this.announcementsService
-      .getAnnouncementsByDescription(word)
-      .subscribe(result => (this.announcements = result));
-  }
-
-  getFilteredAnnouncements(filters) {
-    return this.announcementsService
-      .getFilteredAnnouncements(filters)
+      .getFilteredAnnouncements(this.filters.value)
       .subscribe(result => (this.announcements = result));
   }
 }
