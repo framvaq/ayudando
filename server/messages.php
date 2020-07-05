@@ -9,7 +9,7 @@ if ($postdata !== null && isset($postdata) && !empty($postdata)) {
     $data = json_decode($postdata);
     $id = trim(htmlspecialchars($data->user));
 
-    $consult = "SELECT * FROM messages WHERE user_id=$id";
+    $consult = "SELECT * FROM messages WHERE user_id='$id'";
     $query = $db->prepare($consult);
     $query->execute();
     $messages = $query->fetchAll(PDO::FETCH_OBJ);

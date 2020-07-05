@@ -51,7 +51,7 @@ if ($haveParams) {
     }
     if ($issetUser) {
         $user = $_GET['user'];
-        $userQuery = "user=$user";
+        $userQuery = "user='$user'";
     }
 
     // Get parameters
